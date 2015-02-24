@@ -676,7 +676,7 @@
     }
 }
 
-#pragma mark - CUBE_POST
+#pragma mark - CUBE_SINGLE_POST
 
 -(void)requestForPostCube:(NSMutableDictionary *)info{
     
@@ -741,8 +741,80 @@
                        });
     }
     
+}
+#pragma mark - CUBE_MULTIPLE_POST
+
+-(void)requestForMultiplePostCube:(NSMutableDictionary *)info{
+    
+    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:urlPostCube];
+    
+    NSString *posterId = [info valueForKey:@"poster_id"];
+    NSString *receiverId = [info valueForKey:@"receiver_id"];
+    NSString *cubeType = [info valueForKey:@"cube_type"];
+    NSString *cubeId = [info valueForKey:@"cube_id"];
+    NSString *cubeComments = [info valueForKey:@"cube_comments"];
+    NSString *postedTime = [info valueForKey:@"posted_time"];
+    
+    
+    [request setPostValue:posterId forKey:@"poster_id"];
+    [request setPostValue:receiverId forKey:@"receiver_id"];
+    [request setPostValue:cubeType forKey:@"cube_type"];
+    [request setPostValue:cubeId forKey:@"cube_id"];
+    [request setPostValue:cubeComments forKey:@"cube_comments"];
+    [request setPostValue:postedTime forKey:@"posted_time"];
+    
+    [request setDelegate:self];
+    [request setDidFailSelector:@selector(requestPostCubeFail:)];
+    [request setDidFinishSelector:@selector(requestPostCubeSuccess:)];
+    [request startAsynchronous];
     
 }
+-(void)requestMultiplePostCubeFail:(ASIFormDataRequest*)request{
+    
+    NSException *e;
+    NSLog(@"%@",e);
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_MULTIPLE_POST_FAILED object:@"Something went wrong,try again !"];
+                   });
+    
+}
+
+-(void)requestMultiplePostCubeSuccess:(ASIFormDataRequest*)request{
+    
+    NSString *responseString = [request responseString];
+    responseString = [[responseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+    responseString = [responseString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+    SBJSON *parser=[[SBJSON alloc]init];
+    
+    NSDictionary *results = [parser objectWithString:responseString error:nil];
+    NSMutableDictionary *responseDict = ((NSMutableDictionary *)[results objectForKey:@"response"]);
+    NSInteger statusCode = [[responseDict valueForKey:@"status_code"] integerValue];
+    if (statusCode==200)
+    {
+        NSString *successMsg = [responseDict objectForKey:@"message"];
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_MULTIPLE_POST_SUCCESS object:successMsg];
+                       });
+        
+    }else{
+        
+        NSString *errMsg = [responseDict objectForKey:@"error_msg"];
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_MULTIPLE_POST_FAILED object:errMsg];
+                       });
+    }
+    
+}
+
+#pragma mark - CUBE_SINGLE_TEAM_POST
+#pragma mark - CUBE_MULTIPLE_TEAM_POST
+#pragma mark - CUBE_MULTIPLE_USER_AND_MULTIPLE_TEAM_POST
+#pragma mark - CUBE_SINGLE_USER_AND_MULTIPLE_TEAM_POST
+#pragma mark - CUBE_MULTIPLE_USER_AND_SINGLE_TEAM_POST
+#pragma mark - CUBE_SINGLE_USER_AND_SINGLE_TEAM_POST
 
 
 #pragma mark - CUBE_FEED_POST_COMMENT
