@@ -156,8 +156,33 @@
 #define NOTIFICATION_CUBE_COMMENT_LIST_FAILED @"notificationCubeCommentListFailed"
 #define NOTIFICATION_CUBE_COMMENT_LIST_SUCCESS @"notificationCubeCommentListSuccess"
 
+//====== CUBE POST ======
+
+//SU
 #define NOTIFICATION_CUBE_POST_FAILED @"notificationPostCubeFailed"
 #define NOTIFICATION_CUBE_POST_SUCCESS @"notificationPostCubeSuccess"
+//MU
+#define NOTIFICATION_CUBE_MULTIPLE_POST_FAILED @"notificationMultiplePostCubeFailed"
+#define NOTIFICATION_CUBE_MULTIPLE_POST_SUCCESS @"notificationMultiplePostCubeSuccess"
+//ST
+#define NOTIFICATION_CUBE_SINGLE_TEAM_POST_FAILED @"notificationSingleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_SINGLE_TEAM_POST_SUCCESS @"notificationSingleTeamPostCubeSuccess"
+//MT
+#define NOTIFICATION_CUBE_MULTIPLE_TEAM_POST_FAILED @"notificationMultipleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_MULTIPLE_TEAM_POST_SUCCESS @"notificationMultipleTeamPostCubeSuccess"
+//MUMT
+#define NOTIFICATION_CUBE_MULTIPLE_USER_AND_MULTIPLE_TEAM_POST_FAILED @"notificationMultipleUserAndMultipleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_MULTIPLE_USER_AND_MULTIPLE_TEAM_POST_SUCCESS @"notificationMultipleUserAndMultipleTeamPostCubeSuccess"
+//SUMT
+#define NOTIFICATION_CUBE_SINGLE_USER_AND_MULTIPLE_TEAM_POST_FAILED @"notificationSingleUserAndMultipleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_SINGLE_USER_AND_MULTIPLE_TEAM_POST_SUCCESS @"notificationSingleUserAndMultipleTeamPostCubeSuccess"
+//MUST
+#define NOTIFICATION_CUBE_MULTIPLE_USER_AND_SINGLE_TEAM_POST_FAILED @"notificationMultipleUserAndSingleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_MULTIPLE_USER_AND_SINGLE_TEAM_POST_SUCCESS @"notificationMultipleUserAndSingleTeamPostCubeSuccess"
+//SUST
+#define NOTIFICATION_CUBE_SINGLE_USER_AND_SINGLE_TEAM_POST_FAILED @"notificationSingleUserAndSingleTeamPostCubeFailed"
+#define NOTIFICATION_CUBE_SINGLE_USER_AND_SINGLE_TEAM_POST_SUCCESS @"notificationSingleUserAndSingleTeamPostCubeSuccess"
+//====== END ======
 
 #define NOTIFICATION_CUBE_FEED_POST_COMMENT_FAILED @"notificationCubeFeedPostCommentFailed"
 #define NOTIFICATION_CUBE_FEED_POST_COMMENT_SUCCESS @"notificationCubeFeedPostCommentSuccess"
