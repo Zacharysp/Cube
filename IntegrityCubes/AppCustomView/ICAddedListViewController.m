@@ -14,7 +14,7 @@
 
 @implementation ICAddedListViewController
 
-@synthesize delegate;
+@synthesize arrList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,17 +29,14 @@
 {
     [super viewDidLoad];
     
-    arrNotification = [[NSMutableArray alloc]init];
-    arrNotification=[[ICDataBaseInteraction databaseInteractionManager] getNotificationMessage];
+    tblList=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+    tblList.dataSource=self;
+    tblList.delegate=self;
     
-    tblNotification=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 200, 260)];
-    tblNotification.dataSource=self;
-    tblNotification.delegate=self;
+    [tblList reloadData];
+    [self.view addSubview:tblList];
     
-    [tblNotification reloadData];
-    [self.view addSubview:tblNotification];
-    
-    tblNotification.tableFooterView = [UIView new];
+    tblList.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,19 +54,15 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        
-        ICNotificationHolder *notificationDHolder=[arrNotification objectAtIndex:indexPath.row];
-        NSInteger notification_id=[[NSString stringWithFormat:@"%@",notificationDHolder.strNotificationId]integerValue];
-        [[ICDataBaseInteraction databaseInteractionManager] deleteNotification:notification_id];
-        [arrNotification removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
+        [arrList removeObjectAtIndex:indexPath.row];
+        [tblList reloadData];
         
     }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==1) {
-        return arrNotification.count;
+        return arrList.count;
     }
     return 0;
 }
@@ -89,7 +82,7 @@
         view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 26)];
         view.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:59.0/255.0 blue:59.0/255.0 alpha:1];
         UILabel*lblTitle=[[UILabel alloc]initWithFrame:CGRectMake(5, 5, 100, 15)];
-        lblTitle.text = @"Cube Notification";
+        lblTitle.text = @"person added";
         lblTitle.font=[UIFont systemFontOfSize:10];
         lblTitle.textColor=[UIColor whiteColor];
         UIButton *btnClearAllN=[[UIButton alloc]initWithFrame:CGRectMake(144, 0, 60, 26)];
@@ -126,14 +119,14 @@
     {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    ICNotificationHolder *holder=[ICNotificationHolder new];
-    holder=[arrNotification objectAtIndex:indexPath.row];
-    if ([holder.strSeenFlag isEqualToString:@"0"])
-    {
-        cell.contentView.backgroundColor=[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
-    }
+//    ICNotificationHolder *holder=[ICNotificationHolder new];
+//    holder=[arrList objectAtIndex:indexPath.row];
+//    if ([holder.strSeenFlag isEqualToString:@"0"])
+//    {
+//        cell.contentView.backgroundColor=[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
+//    }
     cell.textLabel.numberOfLines=2;
-    cell.textLabel.text=holder.strMessage;
+    cell.textLabel.text=[arrList objectAtIndex:indexPath.row];
     [cell.textLabel setFont:[UIFont systemFontOfSize:10]];
     cell.textLabel.adjustsFontSizeToFitWidth=YES;
     cell.textLabel.minimumScaleFactor=0.5f;
@@ -144,22 +137,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ICNotificationHolder *holder=[ICNotificationHolder new];
-    holder=[arrNotification objectAtIndex:indexPath.row];
-    if ([ICUtils isConnectedToHost])
-    {
-        [[ICDataBaseInteraction databaseInteractionManager] updateParticulerNotification:holder];
-        [delegate commentPage:holder];
-    }else{
-        [ICUtils showAlert:MESSAGE_NET_NOT_AVAILABLE];
-    }
+//    ICNotificationHolder *holder=[ICNotificationHolder new];
+//    holder=[arrList objectAtIndex:indexPath.row];
+//    if ([ICUtils isConnectedToHost])
+//    {
+//        [[ICDataBaseInteraction databaseInteractionManager] updateParticulerNotification:holder];
+//        [delegate commentPage:holder];
+//    }else{
+//        [ICUtils showAlert:MESSAGE_NET_NOT_AVAILABLE];
+//    }
 }
 -(void)btnClearAllNDidClicked:(id)sender{
     
-    if (arrNotification.count>0) {
-        [[ICDataBaseInteraction databaseInteractionManager]clearUserNotificationData];
-        [arrNotification removeAllObjects];
-        [tblNotification reloadData];
+    if (arrList.count>0) {
+        [arrList removeAllObjects];
+        [tblList reloadData];
     }
     
 }

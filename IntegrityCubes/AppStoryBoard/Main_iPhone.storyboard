@@ -256,15 +256,15 @@
                                 <color key="backgroundColor" red="0.75686274509999996" green="0.0" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="RTd-k3-eft">
-                                <rect key="frame" x="0.0" y="208" width="320" height="362"/>
+                                <rect key="frame" x="0.0" y="207.99999858438966" width="320" height="362.00000141561031"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sidelogo.png" id="i0G-7G-mMv">
-                                        <rect key="frame" x="64" y="249" width="135" height="94"/>
+                                        <rect key="frame" x="64" y="249" width="135" height="94.000000387951502"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Opportunity Engine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AJf-93-F2f">
-                                        <rect key="frame" x="26" y="331" width="225" height="21"/>
+                                        <rect key="frame" x="26" y="331.00000141561031" width="225" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -439,7 +439,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jhon-deer1.png" id="EvX-Xp-TYc">
-                                                            <rect key="frame" x="49" y="0.5" width="27.5" height="31.5"/>
+                                                            <rect key="frame" x="47" y="-2" width="27.5" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Berry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="GkL-U9-sGD">
@@ -500,7 +500,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jhon-deer1.png" id="4x7-wS-Axp">
-                                                            <rect key="frame" x="47" y="2.5" width="32" height="28"/>
+                                                            <rect key="frame" x="47" y="-1.5" width="31.5" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Berry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="YOe-cy-E7x">
@@ -1971,7 +1971,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aGV-Ga-3IV">
-                                                    <rect key="frame" x="8" y="6" width="29" height="29.5"/>
+                                                    <rect key="frame" x="8" y="6" width="29" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="amI-sc-nYS">
@@ -2005,7 +2005,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HZJ-ZK-trH">
-                                                    <rect key="frame" x="4.5" y="4" width="31.5" height="31.5"/>
+                                                    <rect key="frame" x="4.5" y="4" width="31.5" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" id="opw-IH-YXl">

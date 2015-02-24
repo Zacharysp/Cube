@@ -8,17 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol NotificationDeledate <NSObject>
-
--(void)commentPage:(ICNotificationHolder *)holder;
-
-@end
 @interface ICAddedListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray *arrNotification;
-    UITableView *tblNotification;
+    UITableView *tblList;
 }
 
-@property(nonatomic,strong)id <NotificationDeledate>delegate;
+
+@property(nonatomic,strong)NSMutableArray *arrList;
+
 @end
 
