@@ -1,0 +1,987 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Noel N5",
+               "short_name" : "Noel N5",
+               "types" : [ "natural_feature", "establishment" ]
+            },
+            {
+               "long_name" : "Kitimat-Stikine D",
+               "short_name" : "Kitimat-Stikine D",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Kitimat-Stikine",
+               "short_name" : "Kitimat-Stikine",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "British Columbia",
+               "short_name" : "BC",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Canada",
+               "short_name" : "CA",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "V0J",
+               "short_name" : "V0J",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Noel N5, Kitimat-Stikine D, BC V0J, Canada",
+         "geometry" : {
+            "location" : {
+               "lat" : 57.4755555,
+               "lng" : -132.3597222
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 57.57141659999999,
+                  "lng" : -132.1036034
+               },
+               "southwest" : {
+                  "lat" : 57.37944219999999,
+                  "lng" : -132.615841
+               }
+            }
+         },
+         "types" : [ "natural_feature", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Lamont",
+               "short_name" : "Lamont",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Jefferson County",
+               "short_name" : "Jefferson County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Florida",
+               "short_name" : "FL",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "32336",
+               "short_name" : "32336",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null, Lamont, FL 32336, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 30.4568673,
+                  "lng" : -83.90012349999999
+               },
+               "southwest" : {
+                  "lat" : 30.4563915,
+                  "lng" : -83.90030329999999
+               }
+            },
+            "location" : {
+               "lat" : 30.4566045,
+               "lng" : -83.9002349
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 30.4579783802915,
+                  "lng" : -83.89886441970849
+               },
+               "southwest" : {
+                  "lat" : 30.4552804197085,
+                  "lng" : -83.90156238029149
+               }
+            }
+         },
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "\u003cNull\u003e",
+               "short_name" : "\u003cNull\u003e",
+               "types" : [ "natural_feature", "establishment" ]
+            },
+            {
+               "long_name" : "San Juan County",
+               "short_name" : "San Juan County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New Mexico",
+               "short_name" : "NM",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "87410",
+               "short_name" : "87410",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "\u003cNull\u003e, New Mexico 87410, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 36.792276,
+                  "lng" : -108.0300368
+               },
+               "southwest" : {
+                  "lat" : 36.7917928,
+                  "lng" : -108.0301394
+               }
+            },
+            "location" : {
+               "lat" : 36.7920344,
+               "lng" : -108.0300881
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 36.79338338029149,
+                  "lng" : -108.0287391197085
+               },
+               "southwest" : {
+                  "lat" : 36.7906854197085,
+                  "lng" : -108.0314370802915
+               }
+            }
+         },
+         "types" : [ "natural_feature", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "null",
+               "short_name" : "null",
+               "types" : [ "natural_feature", "establishment" ]
+            },
+            {
+               "long_name" : "Mount Waddington A",
+               "short_name" : "Mount Waddington A",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Mount Waddington",
+               "short_name" : "Mount Waddington",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "British Columbia",
+               "short_name" : "BC",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Canada",
+               "short_name" : "CA",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "V0P",
+               "short_name" : "V0P",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "null, Mount Waddington A, BC V0P, Canada",
+         "geometry" : {
+            "location" : {
+               "lat" : 50.9497222,
+               "lng" : -126.7505555
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 50.95107118029149,
+                  "lng" : -126.7492065197085
+               },
+               "southwest" : {
+                  "lat" : 50.94837321970849,
+                  "lng" : -126.7519044802915
+               }
+            }
+         },
+         "types" : [ "natural_feature", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Consolacao",
+               "short_name" : "Consolacao",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "01332",
+               "short_name" : "01332",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Consolacao, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.560303,
+               "lng" : -46.657365
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.55895401970849,
+                  "lng" : -46.6560160197085
+               },
+               "southwest" : {
+                  "lat" : -23.5616519802915,
+                  "lng" : -46.65871398029149
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Vila Nova Cachoeirinha",
+               "short_name" : "Vila Nova Cachoeirinha",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "02614",
+               "short_name" : "02614",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Vila Nova Cachoeirinha, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.473269,
+               "lng" : -46.657337
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.4719200197085,
+                  "lng" : -46.6559880197085
+               },
+               "southwest" : {
+                  "lat" : -23.4746179802915,
+                  "lng" : -46.65868598029149
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Term. Metrô Tatuapé (lado Norte), 0",
+               "short_name" : "Term. Metrô Tatuapé (lado Norte), 0",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Tatuapé",
+               "short_name" : "Tatuapé",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "03314",
+               "short_name" : "03314",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Term. Metrô Tatuapé (lado Norte), 0 - Tatuapé, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.539794,
+               "lng" : -46.576435
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.5384450197085,
+                  "lng" : -46.5750860197085
+               },
+               "southwest" : {
+                  "lat" : -23.5411429802915,
+                  "lng" : -46.5777839802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Vila dos Remedios",
+               "short_name" : "Vila dos Remedios",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Osasco",
+               "short_name" : "Osasco",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "05102",
+               "short_name" : "05102",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Vila dos Remedios, Osasco - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.520724,
+               "lng" : -46.749587
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.51937501970849,
+                  "lng" : -46.7482380197085
+               },
+               "southwest" : {
+                  "lat" : -23.5220729802915,
+                  "lng" : -46.7509359802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Santana",
+               "short_name" : "Santana",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "02036",
+               "short_name" : "02036",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Santana, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.50209,
+               "lng" : -46.62263
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.5007410197085,
+                  "lng" : -46.6212810197085
+               },
+               "southwest" : {
+                  "lat" : -23.5034389802915,
+                  "lng" : -46.6239789802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Vila Prudente",
+               "short_name" : "Vila Prudente",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "03130",
+               "short_name" : "03130",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Vila Prudente, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.57945,
+               "lng" : -46.586727
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.57810101970849,
+                  "lng" : -46.5853780197085
+               },
+               "southwest" : {
+                  "lat" : -23.5807989802915,
+                  "lng" : -46.5880759802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Null, São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.680525,
+               "lng" : -46.632068
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.6791760197085,
+                  "lng" : -46.6307190197085
+               },
+               "southwest" : {
+                  "lat" : -23.6818739802915,
+                  "lng" : -46.63341698029149
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "...",
+               "short_name" : "...",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "..., São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.6832032,
+               "lng" : -46.6332661
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.68185421970849,
+                  "lng" : -46.6319171197085
+               },
+               "southwest" : {
+                  "lat" : -23.6845521802915,
+                  "lng" : -46.6346150802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Canindé",
+               "short_name" : "Canindé",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "03029",
+               "short_name" : "03029",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Canindé, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.53085,
+               "lng" : -46.615852
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.5295010197085,
+                  "lng" : -46.6145030197085
+               },
+               "southwest" : {
+                  "lat" : -23.5321989802915,
+                  "lng" : -46.6172009802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "R. Bom Pastor, 3029",
+               "short_name" : "R. Bom Pastor, 3029",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Ipiranga",
+               "short_name" : "Ipiranga",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "04203",
+               "short_name" : "04203",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "R. Bom Pastor, 3029 - Ipiranga, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.6024563,
+               "lng" : -46.60231880000001
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.6011073197085,
+                  "lng" : -46.60096981970851
+               },
+               "southwest" : {
+                  "lat" : -23.6038052802915,
+                  "lng" : -46.60366778029151
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Santana",
+               "short_name" : "Santana",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "02403",
+               "short_name" : "02403",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Santana, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.494545,
+               "lng" : -46.626546
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.4931960197085,
+                  "lng" : -46.6251970197085
+               },
+               "southwest" : {
+                  "lat" : -23.4958939802915,
+                  "lng" : -46.6278949802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "R. das Perobas, 75",
+               "short_name" : "R. das Perobas, 75",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Sapoema",
+               "short_name" : "Sapoema",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Diadema",
+               "short_name" : "Diadema",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "09973",
+               "short_name" : "09973",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "R. das Perobas, 75 - Sapoema, Diadema - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.7173517,
+               "lng" : -46.6251067
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.7160027197085,
+                  "lng" : -46.6237577197085
+               },
+               "southwest" : {
+                  "lat" : -23.7187006802915,
+                  "lng" : -46.6264556802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Vila Santa Luzia",
+               "short_name" : "Vila Santa Luzia",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "São Bernardo do Campo",
+               "short_name" : "São Bernardo do Campo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Null - Vila Santa Luzia, São Bernardo do Campo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.657763,
+               "lng" : -46.616908
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.6564140197085,
+                  "lng" : -46.6155590197085
+               },
+               "southwest" : {
+                  "lat" : -23.6591119802915,
+                  "lng" : -46.61825698029149
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Jardim Angela",
+               "short_name" : "Jardim Angela",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Embu das Artes",
+               "short_name" : "Embu das Artes",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Null - Jardim Angela, Embu das Artes - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.685514,
+               "lng" : -46.801326
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.6841650197085,
+                  "lng" : -46.7999770197085
+               },
+               "southwest" : {
+                  "lat" : -23.6868629802915,
+                  "lng" : -46.8026749802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Null",
+               "short_name" : "Null",
+               "types" : [ "bus_station", "transit_station", "establishment" ]
+            },
+            {
+               "long_name" : "Vila Nélson",
+               "short_name" : "Vila Nélson",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Sao Paulo",
+               "short_name" : "Sao Paulo",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "São Paulo",
+               "short_name" : "SP",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Brazil",
+               "short_name" : "BR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "02276",
+               "short_name" : "02276",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Null - Vila Nélson, Sao Paulo - São Paulo, Brazil",
+         "geometry" : {
+            "location" : {
+               "lat" : -23.461144,
+               "lng" : -46.585786
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : -23.45979501970849,
+                  "lng" : -46.5844370197085
+               },
+               "southwest" : {
+                  "lat" : -23.4624929802915,
+                  "lng" : -46.5871349802915
+               }
+            }
+         },
+         "types" : [ "bus_station", "transit_station", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}

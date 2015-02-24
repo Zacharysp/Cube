@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Beauty Valet Site;Nathsha;;;
+FN:Nathsha Beauty Valet Site
+ORG:(null);
+item1.EMAIL;type=INTERNET:Natasha@apositivity.com
+item1.X-ABLabel:_$!<Other>!$_
+TEL;type=MAIN:8324644687
+item2.TEL:3013414900
+item2.X-ABLabel:_$!<Other>!$_
+item3.ADR;type=WORK:;;6000 Rickenbacker Rd;New Jersey;Libertyville;90040;Us
+item3.X-ABADR:
+END:VCARD
