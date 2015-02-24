@@ -37,6 +37,8 @@
     arrTeamOrPersonList = [[NSMutableArray alloc]init];
     arrSearchPersonData = [[NSMutableArray alloc]init];
     arrSearchTeamData = [[NSMutableArray alloc]init];
+    arrPersonList = [[NSMutableArray alloc] init];
+    [arrPersonList addObject:@"123"];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListSuccess:) name:NOTIFICATION_LIST_CUBE_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListFailed:) name:NOTIFICATION_LIST_CUBE_FAILED object:nil];
@@ -397,14 +399,14 @@
 }
 
 - (IBAction)btnAddedPressed:(id)sender {
-    ICNotificationViewController *controller = [[ICNotificationViewController alloc] init];
-    controller.delegate = self;
+    ICAddedListViewController *controller = [[ICAddedListViewController alloc] init];
+    controller.arrList = arrPersonList;
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,300);
+    popover.contentSize = CGSizeMake(220,239);
     popover.border = NO;
-    popover.tint = FPPopoverRedTint;
+    popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:CGPointMake(263,17)];
+    [popover presentPopoverFromPoint:CGPointMake(223,80)];
 }
 -(IBAction)listOfCubeAwards:(id)sender
 {
