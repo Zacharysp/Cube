@@ -125,8 +125,8 @@
 //    {
 //        cell.contentView.backgroundColor=[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
 //    }
-    cell.textLabel.numberOfLines=2;
-    cell.textLabel.text=[arrList objectAtIndex:indexPath.row];
+    ICPostReceiverHolder *person = (ICPostReceiverHolder*)[arrList objectAtIndex:indexPath.row];
+    cell.textLabel.text=person.strName;
     [cell.textLabel setFont:[UIFont systemFontOfSize:10]];
     cell.textLabel.adjustsFontSizeToFitWidth=YES;
     cell.textLabel.minimumScaleFactor=0.5f;
@@ -153,7 +153,6 @@
         [arrList removeAllObjects];
         [tblList reloadData];
     }
-    
 }
 
 @end

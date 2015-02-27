@@ -75,9 +75,9 @@
 //#define URL_MAIN @"http://54.85.21.40/api/"
 //#define URL_MAIN @"http://thecube.integritystaffing.com/api/"
 //#define URL_MAIN @"http://192.168.1.200:8080/integritycubesdev/api/"
-//#define URL_MAIN @"http://182.237.17.106:8080/integritycubesdev/api/"
+#define URL_MAIN @"http://182.237.17.106:8080/integritycubesdev/api/"
 
-#define URL_MAIN @"http://aryamobi.com/integritycube/"
+//#define URL_MAIN @"http://aryamobi.com/integritycube/api/"
 
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6064BCB1A9E9CE6000E2986 /* ICPostReceiverHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */; };
+		B6064BCE1A9EB8CC000E2986 /* ICAddPersonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */; };
 		B6CA39571A9CF9D300F3B230 /* ICAddedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */; };
 		CE0A5D9B1941997D0024A75B /* leaderBoardIphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D991941997D0024A75B /* leaderBoardIphone.png */; };
 		CE0A5D9C1941997D0024A75B /* leaderBoardIphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D9A1941997D0024A75B /* leaderBoardIphone@2x.png */; };
@@ -250,6 +252,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6064BC91A9E9CE6000E2986 /* ICPostReceiverHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICPostReceiverHolder.h; sourceTree = "<group>"; };
+		B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPostReceiverHolder.m; sourceTree = "<group>"; };
+		B6064BCC1A9EB8CC000E2986 /* ICAddPersonButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAddPersonButton.h; sourceTree = "<group>"; };
+		B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddPersonButton.m; sourceTree = "<group>"; };
 		B6CA39551A9CF9D300F3B230 /* ICAddedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAddedListViewController.h; sourceTree = "<group>"; };
 		B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddedListViewController.m; sourceTree = "<group>"; };
 		CE0A5D991941997D0024A75B /* leaderBoardIphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderBoardIphone.png; sourceTree = "<group>"; };
@@ -623,6 +629,8 @@
 			children = (
 				B6CA39551A9CF9D300F3B230 /* ICAddedListViewController.h */,
 				B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */,
+				B6064BCC1A9EB8CC000E2986 /* ICAddPersonButton.h */,
+				B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */,
 			);
 			name = AddedListViewController;
 			sourceTree = "<group>";
@@ -909,6 +917,8 @@
 				CE0C34F81A079F9900C49A9B /* ICNotificationSettingHolder.m */,
 				CE1AE8A71A0890A200B26E44 /* ICNotificationUpdateSettingHolder.h */,
 				CE1AE8A81A0890A300B26E44 /* ICNotificationUpdateSettingHolder.m */,
+				B6064BC91A9E9CE6000E2986 /* ICPostReceiverHolder.h */,
+				B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */,
 				CECCBA3B193DD8A2000B41AF /* ICAlertView */,
 			);
 			path = DataModels;
@@ -1724,6 +1734,7 @@
 			files = (
 				CE33F37518FEBD7C00E89E1E /* ICLineAnimation.m in Sources */,
 				CE3255D418DAAE1B00248DFA /* ICGlobalData.m in Sources */,
+				B6064BCB1A9E9CE6000E2986 /* ICPostReceiverHolder.m in Sources */,
 				CEA4C09D1946BD8D002F6D6C /* ICChangePwdViewController.m in Sources */,
 				CE28855418D1C9F7006BE26B /* SBJSON.m in Sources */,
 				CE294B3418DDA81B0083EFE8 /* ICCubeFeedCommentHolder.m in Sources */,
@@ -1799,6 +1810,7 @@
 				CE28855A18D1CA20006BE26B /* Validate.m in Sources */,
 				CEA4C0AC1946BEA2002F6D6C /* ICBarCubeValueViewController.m in Sources */,
 				CE1E6FAC18EED0F800B33342 /* ICProfileViewController.m in Sources */,
+				B6064BCE1A9EB8CC000E2986 /* ICAddPersonButton.m in Sources */,
 				CE1E6FA918EEC62300B33342 /* ICCubeListCell.m in Sources */,
 				CE1454EB18D4557500A18CC2 /* MFSideMenuContainerViewController.m in Sources */,
 				B6CA39571A9CF9D300F3B230 /* ICAddedListViewController.m in Sources */,

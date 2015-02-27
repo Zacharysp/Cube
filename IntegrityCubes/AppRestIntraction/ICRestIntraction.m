@@ -518,7 +518,7 @@
                    });
 }
 
--(void)requestListCubeFeedCommentsSuccess:(ASIFormDataRequest*)request
+    
 {    
     NSString *responseString = [request responseString];
     responseString = [[responseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
@@ -683,7 +683,7 @@
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:urlPostCube];
     
     NSString *posterId = [info valueForKey:@"poster_id"];
-    NSString *receiverId = [info valueForKey:@"receiver_id"];
+    NSString *posted_ids = [info valueForKey:@"posted_ids"];
     NSString *cubeType = [info valueForKey:@"cube_type"];
     NSString *cubeId = [info valueForKey:@"cube_id"];
     NSString *cubeComments = [info valueForKey:@"cube_comments"];
@@ -691,7 +691,7 @@
     
     
     [request setPostValue:posterId forKey:@"poster_id"];
-    [request setPostValue:receiverId forKey:@"receiver_id"];
+    [request setPostValue:posted_ids forKey:@"posted_ids"];
     [request setPostValue:cubeType forKey:@"cube_type"];
     [request setPostValue:cubeId forKey:@"cube_id"];
     [request setPostValue:cubeComments forKey:@"cube_comments"];

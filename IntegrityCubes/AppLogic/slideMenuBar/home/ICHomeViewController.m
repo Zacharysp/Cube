@@ -37,8 +37,7 @@
     arrTeamOrPersonList = [[NSMutableArray alloc]init];
     arrSearchPersonData = [[NSMutableArray alloc]init];
     arrSearchTeamData = [[NSMutableArray alloc]init];
-    arrPersonList = [[NSMutableArray alloc] init];
-    [arrPersonList addObject:@"123"];
+    arrAddedPersonList = [[NSMutableArray alloc] init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListSuccess:) name:NOTIFICATION_LIST_CUBE_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListFailed:) name:NOTIFICATION_LIST_CUBE_FAILED object:nil];
@@ -82,10 +81,6 @@
     btnCubeAward.layer.borderWidth = 0.5;
     btnCubeAward.layer.masksToBounds = YES;
     
-    btnAddToList.layer.cornerRadius = 8.0f;
-    btnAddToList.layer.borderColor = [UIColor blackColor].CGColor;
-    btnAddToList.layer.borderWidth = 0.5;
-    btnAddToList.layer.masksToBounds = YES;
     
     imgVCube.layer.cornerRadius = 8.0f;
     imgVCube.layer.masksToBounds = YES;
@@ -236,7 +231,7 @@
 }
 -(void)refreshCubeFeedTable:(id)sender{
     
-    pageId = 0;
+    pageId = 1;
     isSearchStaffTeam=NO;
     sBarStaffTeam.text=@"";
     arrTempCubeFeedList = [arrCubeFeedList copy];
@@ -257,7 +252,7 @@
         }
         
         //api calling
-        pageId=0;
+        pageId=1;
         [HUD show];
         [self requestListOfEmployeeOrTeam];
         [self requestListCube];
@@ -316,10 +311,7 @@
 -(IBAction)btnSubmitPostCubeDidClicked:(id)sender{
     
     [txtCubeComment resignFirstResponder];
-    
-    if (searchEditBegin == YES)
-    {
-        if (![strReceiverId isEqual:@""])
+        if (![arrAddedPersonList count] == 0)
         {
             if (!(strCubeId) ||[strCubeId isEqual:@""])
             {
@@ -345,8 +337,8 @@
                     {
                         NSMutableDictionary *info = [NSMutableDictionary dictionary];
                         [info setValue:[NSString stringWithFormat:@"%ld",(long)loginDHolder.icUserId] forKey:@"poster_id"];
-                        [info setValue:strReceiverId forKey:@"receiver_id"];
-                        [info setValue:strRecordType forKeyPath:@"cube_type"];
+                        //[info setValue:strReceiverId forKey:@"receiver_id"];
+                        [info setValue:@"u" forKeyPath:@"cube_type"];
                         [info setValue:strCubeId forKeyPath:@"cube_id"];
                         [info setValue:txtCubeComment.text forKeyPath:@"cube_comments"];
                         
@@ -357,6 +349,18 @@
                         strPostedTime= [dateFormat stringFromDate:currentDatetime];
                         
                         [info setValue:strPostedTime forKeyPath:@"posted_time"];
+                        
+                        NSMutableArray *arrJSON = [NSMutableArray new];
+                        
+                        for (ICPostReceiverHolder * personDHolder in arrAddedPersonList) {
+                             NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:personDHolder.strId,@"id", personDHolder.strType, @"type", nil];
+                            [arrJSON addObject:dic];
+                        }
+                        
+                        NSString *strJSON = [arrJSON JSONRepresentation];
+                        
+                        [info setValue:strJSON forKey:@"posted_ids"];
+                        
                         [HUD show];
                         [HUD setHUDText:@"Loading..."];
                         [self requestPostCube:info];
@@ -389,24 +393,19 @@
             [ICUtils showAlert:MESSAGE_SELECT_PERSON_OR_TEAM_ERROR delegate:self btnOk:@"Ok" btnCancel:nil];
             return;
         }
-    }
-    else{
-        
-        [searchTeamOrPerson resetLayout];
-        [ICUtils showAlert:MESSAGE_SELECT_PERSON_OR_TEAM_ERROR delegate:self btnOk:@"Ok" btnCancel:nil];
-        return;
-    }
+    
+
 }
 
 - (IBAction)btnAddedPressed:(id)sender {
     ICAddedListViewController *controller = [[ICAddedListViewController alloc] init];
-    controller.arrList = arrPersonList;
+    controller.arrList = arrAddedPersonList;
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
     popover.contentSize = CGSizeMake(220,239);
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:CGPointMake(223,80)];
+    [popover presentPopoverFromPoint:CGPointMake(230,80)];
 }
 -(IBAction)listOfCubeAwards:(id)sender
 {
@@ -577,19 +576,35 @@
         ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
          cell.textLabel.textColor=[UIColor whiteColor];
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
+        ICAddPersonButton *addBtn = [[ICAddPersonButton alloc] initWithFrame:CGRectMake(278, 6, 30, 23)];
+        [[addBtn titleLabel] setFont:[UIFont fontWithName:@"Helvetica-Bold" size:11]];
+        addBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        addBtn.layer.borderWidth = 1.0f;
+        addBtn.layer.cornerRadius = 4.0f;
+        addBtn.layer.masksToBounds = YES;
+        [addBtn setTitle:@"add" forState:UIControlStateNormal];
+        [addBtn addTarget:self action:@selector(btnAddPersonDidClicked:)forControlEvents:UIControlEventTouchUpInside];
+        addBtn.userDHolder = [ICPostReceiverHolder new];
 
         if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
             
             cell.textLabel.text=[NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
             
             [cell.imageView setImageWithUrl:[NSURL URLWithString:teamOrPersonSearchDHolder.strPersonImageUrl] andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE] andNoImage:[UIImage imageNamed:NO_IMAGE]];
+            addBtn.userDHolder.strType = @"u";
+            addBtn.userDHolder.strId = teamOrPersonSearchDHolder.strPersonUserId;
+            addBtn.userDHolder.strName = [NSString stringWithFormat:@"%@ %@", teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
             
         }else
         {
             cell.textLabel.text=teamOrPersonSearchDHolder.strTeamName;
             [cell.imageView setImageWithUrl:[NSURL URLWithString:teamOrPersonSearchDHolder.strTeamImageUrl] andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE] andNoImage:[UIImage imageNamed:NO_IMAGE]];
-            
+            addBtn.userDHolder.strType = @"t";
+            addBtn.userDHolder.strId = teamOrPersonSearchDHolder.strTeamId;
+            addBtn.userDHolder.strName = teamOrPersonSearchDHolder.strTeamName;
         }
+        
+        [cell.contentView addSubview:addBtn];
         
          return cell;
     }
@@ -777,66 +792,95 @@
     }
     else if(tableView == tblSearchTeamOrPerson)
     {
-        searchEditBegin = YES;
-        [searchTeamOrPerson resignFirstResponder];
-      
-        dispatch_async(dispatch_get_main_queue(), ^
-             {
-                    [UIView beginAnimations:nil context:nil];
-                    [UIView setAnimationDuration:0.5];
-                    searchTeamOrPerson.frame = CGRectMake(5, 8, 240, searchTeamOrPerson.frame.size.height);
-                    UIView *view = [searchTeamOrPerson.subviews objectAtIndex:0];
-                    [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 240, 30)];
-                    view.layer.cornerRadius = 5.0;
-                    [UIView commitAnimations];
-                    [searchTeamOrPerson resetLayout];
-             });
-       
-        if (arrSearchTeamOrPersonData.count > 0)
+        ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+        ICPostReceiverHolder *receiver = [ICPostReceiverHolder new];
+        if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
+            receiver.strType = @"u";
+            receiver.strId = teamOrPersonSearchDHolder.strPersonUserId;
+            receiver.strName = [NSString stringWithFormat:@"%@ %@", teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
+            
+        }else
         {
-            if (isSearchStaffTeam) {
-             
-                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
-                arrSearchStaffTeam=[NSMutableArray new];
-             
-                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
-                {
-                    sBarStaffTeam.text = teamOrPersonSearchDHolder.strTeamName;
-                    strSearchReceiverId = teamOrPersonSearchDHolder.strTeamId;
-                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
-
-                }
-                else
-                {
-                    sBarStaffTeam.text = [NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
-                    strSearchReceiverId = teamOrPersonSearchDHolder.strPersonUserId;
-                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
-                    
-                }
-                searchPageId=0;
-                [self getSearchFeeds];
-              
-            }else{
-                
-                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
-                
-                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
-                {
-                    searchTeamOrPerson.text=teamOrPersonSearchDHolder.strTeamName;
-                    strReceiverId=teamOrPersonSearchDHolder.strTeamId;
-                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
-                    
-                }
-                else
-                {
-                    searchTeamOrPerson.text=[NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
-                    
-                    strReceiverId=teamOrPersonSearchDHolder.strPersonUserId;
-                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
-                    
-                }
-            }
+            receiver.strType = @"t";
+            receiver.strId = teamOrPersonSearchDHolder.strTeamId;
+            receiver.strName = teamOrPersonSearchDHolder.strTeamName;
         }
+        searchTeamOrPerson.text = receiver.strName;
+        [arrAddedPersonList addObject:receiver];
+        [searchTeamOrPerson resignFirstResponder];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.3];
+        searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
+                                             , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
+        UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
+        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
+        view.layer.cornerRadius=5.0;
+        
+        tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
+        [UIView commitAnimations];
+        [searchTeamOrPerson resetLayout];
+
+//        searchEditBegin = YES;
+//        [searchTeamOrPerson resignFirstResponder];
+//      
+//        dispatch_async(dispatch_get_main_queue(), ^
+//             {
+//                    [UIView beginAnimations:nil context:nil];
+//                    [UIView setAnimationDuration:0.5];
+//                    searchTeamOrPerson.frame = CGRectMake(5, 8, 190, searchTeamOrPerson.frame.size.height);
+//                    UIView *view = [searchTeamOrPerson.subviews objectAtIndex:0];
+//                    [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 190, 30)];
+//                    view.layer.cornerRadius = 5.0;
+//                    [UIView commitAnimations];
+//                    [searchTeamOrPerson resetLayout];
+//             });
+//       
+//        if (arrSearchTeamOrPersonData.count > 0)
+//        {
+//            if (isSearchStaffTeam) {
+//             
+//                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+//                arrSearchStaffTeam=[NSMutableArray new];
+//             
+//                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
+//                {
+//                    sBarStaffTeam.text = teamOrPersonSearchDHolder.strTeamName;
+//                    strSearchReceiverId = teamOrPersonSearchDHolder.strTeamId;
+//                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
+//
+//                }
+//                else
+//                {
+//                    sBarStaffTeam.text = [NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
+//                    strSearchReceiverId = teamOrPersonSearchDHolder.strPersonUserId;
+//                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
+//                    
+//                    
+//                }
+//                searchPageId=0;
+//                [self getSearchFeeds];
+//              
+//            }else{
+//                
+//                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+//                
+//                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
+//                {
+//                    searchTeamOrPerson.text=teamOrPersonSearchDHolder.strTeamName;
+//                    strReceiverId=teamOrPersonSearchDHolder.strTeamId;
+//                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
+//                    
+//                }
+//                else
+//                {
+//                    searchTeamOrPerson.text=[NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
+//                    
+//                    strReceiverId=teamOrPersonSearchDHolder.strPersonUserId;
+//                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
+//                    
+//                }
+//            }
+//        }
         
         tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
     }
@@ -920,9 +964,9 @@
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:0.3];
                 searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
-                                                     , searchTeamOrPerson.frame.origin.y,240,searchTeamOrPerson.frame.size.height);
+                                                     , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
                 UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
-                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 240, 30)];
+                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
                 view.layer.cornerRadius=5.0;
                
                 tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
@@ -970,9 +1014,9 @@
                        {
                            [UIView beginAnimations:nil context:nil];
                            [UIView setAnimationDuration:0.3];
-                           searchTeamOrPerson.frame=CGRectMake(5, 8, 240, searchTeamOrPerson.frame.size.height);
+                           searchTeamOrPerson.frame=CGRectMake(5, 8, 210, searchTeamOrPerson.frame.size.height);
                            UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
-                           [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 240, 30)];
+                           [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
                            view.layer.cornerRadius=5.0;
                            [UIView commitAnimations];
                            [searchTeamOrPerson resetLayout];
@@ -1100,15 +1144,15 @@
                    [UIView beginAnimations:nil context:nil];
                    [UIView setAnimationDuration:0.3];
                    searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
-                                                        , searchTeamOrPerson.frame.origin.y,240,searchTeamOrPerson.frame.size.height);
+                                                        , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
                    UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
-                   [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 240, 30)];
+                   [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
                    view.layer.cornerRadius=5.0;
                    [UIView commitAnimations];
                    [searchTeamOrPerson resetLayout];
                    
                });
-         }
+    }
 
      [searchTeamOrPerson resignFirstResponder];
      [sBarStaffTeam resignFirstResponder];
@@ -1562,13 +1606,14 @@
     lblBtnCube2.hidden=NO;
     imgVCube.hidden=YES;
     lblPickCube.hidden=YES;
+    [arrAddedPersonList removeAllObjects];
   
     [txtCubeComment setText:MESSAGE_WRITE_MESSAGE];
     arrTempCubeFeedList = [arrCubeFeedList copy];
     [arrCubeFeedList removeAllObjects];
     
     //api calling
-    pageId=0;
+    pageId=1;
     [self getFeeds];
     
 //    [HUD hide];
@@ -1668,7 +1713,7 @@
     
     arrTempCubeFeedList = [arrCubeFeedList copy];
     [arrCubeFeedList removeAllObjects];
-    pageId=0;
+    pageId=1;
     
     [self requestListCube];
     [self requestListOfEmployeeOrTeam];
@@ -2134,4 +2179,24 @@
     
 }
 
+-(void)btnAddPersonDidClicked:(ICAddPersonButton*)sender{
+    if (sender.userDHolder) {
+        ICPostReceiverHolder *receiver = sender.userDHolder;
+        searchTeamOrPerson.text = receiver.strName;
+        [arrAddedPersonList addObject:receiver];
+        [searchTeamOrPerson resignFirstResponder];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.3];
+        searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
+                                             , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
+        UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
+        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
+        view.layer.cornerRadius=5.0;
+        
+        tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
+        [UIView commitAnimations];
+        [searchTeamOrPerson resetLayout];
+    }
+    
+}
 @end

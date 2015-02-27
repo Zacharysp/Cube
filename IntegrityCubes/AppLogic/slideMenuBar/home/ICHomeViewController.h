@@ -25,6 +25,8 @@
 #import "Reachability.h"
 #import "ICSearchListCell.h"
 #import "ICAddedListViewController.h"
+#import "ICPostReceiverHolder.h"
+#import "ICAddPersonButton.h"
 
 @protocol UpdateSlideTableDelegate <NSObject>
 -(void)updateSlideTable;
@@ -65,7 +67,7 @@
     NSMutableArray *arrTempCubeFeedList;
     NSMutableArray *arrCubeFeedList;
     NSMutableArray *arrSearchTeamData;
-    NSMutableArray *arrPersonList;
+    NSMutableArray *arrAddedPersonList;
 
     NSMutableArray *arrSearchPersonData;
     NSMutableArray *arrTeamOrPersonList;

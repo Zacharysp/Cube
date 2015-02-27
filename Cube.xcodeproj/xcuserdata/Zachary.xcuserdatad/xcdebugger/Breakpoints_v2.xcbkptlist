@@ -9,61 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
-            timestampString = "445909909.156528"
+            filePath = "IntegrityCubes/AppLogic/slideMenuBar/home/ICHomeViewController.m"
+            timestampString = "446696933.662245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-requestForLogin:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
-            timestampString = "445910420.654049"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-requestLoginSuccess:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
-            timestampString = "445910421.707219"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-requestLoginFail:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
-            timestampString = "446015523.236855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2850"
-            endingLineNumber = "2850"
-            landmarkName = "-requestListSearchCubeFeedSuccess:"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "-btnSubmitPostCubeDidClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IntegrityCubes/AppLogic/slideMenuBar/home/ICHomeViewController.m"
-            timestampString = "446505937.592455"
+            timestampString = "446696933.662245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "900"
-            endingLineNumber = "900"
-            landmarkName = "-searchViewShouldBeginEditing:"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "-btnSubmitPostCubeDidClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppCustomView/ICAddedListViewController.m"
-            timestampString = "446499971.853017"
+            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
+            timestampString = "446692873.275562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "683"
+            endingLineNumber = "683"
+            landmarkName = "-requestForPostCube:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +57,45 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IntegrityCubes/AppLogic/slideMenuBar/home/ICHomeViewController.m"
-            timestampString = "446505937.592455"
+            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
+            timestampString = "446692875.475452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
-            landmarkName = "-btnAddedPressed:"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
+            landmarkName = "-requestPostCubeSuccess:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
+            timestampString = "446694283.966757"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
+            landmarkName = "-requestForListCubeFeedComments:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IntegrityCubes/AppRestIntraction/ICRestIntraction.m"
+            timestampString = "446694285.814663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "-requestListCubeFeedCommentsSuccess:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
