@@ -111,7 +111,6 @@
 -(IBAction)listOfCubeAwards:(id)sender;
 -(IBAction)showRightMenuPressed:(id)sender;
 -(IBAction)btnSubmitPostCubeDidClicked:(id)sender;
-- (IBAction)btnAddedPressed:(id)sender;
 
 @property(nonatomic,assign)id<UpdateSlideTableDelegate>delegate;
 

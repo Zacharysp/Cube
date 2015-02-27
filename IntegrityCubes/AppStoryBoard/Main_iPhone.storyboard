@@ -1170,9 +1170,6 @@
                                 <state key="normal" image="no-person.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="btnAddedPressed:" destination="bvq-h0-Cms" eventType="touchUpInside" id="1Aj-wx-cOh"/>
-                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" id="Uwv-A1-3oH">
                                 <rect key="frame" x="252" y="8" width="60" height="60"/>

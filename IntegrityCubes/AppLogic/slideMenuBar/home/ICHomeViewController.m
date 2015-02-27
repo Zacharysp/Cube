@@ -218,6 +218,13 @@
     
 //    self.view.backgroundColor = [ICUtils orangeColor];
     
+    //add tap on added button
+    UITapGestureRecognizer *addedTapped = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(btnAddedPressed)];
+    addedTapped.numberOfTapsRequired = 1;
+    [btnAddToList addGestureRecognizer:addedTapped];
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -397,7 +404,7 @@
 
 }
 
-- (IBAction)btnAddedPressed:(id)sender {
+- (void)btnAddedPressed {
     ICAddedListViewController *controller = [[ICAddedListViewController alloc] init];
     controller.arrList = arrAddedPersonList;
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
@@ -405,7 +412,7 @@
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:CGPointMake(230,80)];
+    [popover presentPopoverFromPoint:CGPointMake(230,85)];
 }
 -(IBAction)listOfCubeAwards:(id)sender
 {
@@ -583,6 +590,7 @@
         addBtn.layer.cornerRadius = 4.0f;
         addBtn.layer.masksToBounds = YES;
         [addBtn setTitle:@"add" forState:UIControlStateNormal];
+
         [addBtn addTarget:self action:@selector(btnAddPersonDidClicked:)forControlEvents:UIControlEventTouchUpInside];
         addBtn.userDHolder = [ICPostReceiverHolder new];
 

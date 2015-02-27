@@ -518,7 +518,7 @@
                    });
 }
 
-    
+-(void)requestListCubeFeedCommentsSuccess:(ASIFormDataRequest*)request
 {    
     NSString *responseString = [request responseString];
     responseString = [[responseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
