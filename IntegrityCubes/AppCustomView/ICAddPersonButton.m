@@ -10,6 +10,6 @@
 
 @implementation ICAddPersonButton
 
-@synthesize userDHolder;
+@synthesize userDHolder, selectedDHolder;
 
 @end

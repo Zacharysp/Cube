@@ -54,6 +54,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+         ICPostReceiverHolder *person = (ICPostReceiverHolder*)[arrList objectAtIndex:indexPath.row];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:person.strId,@"id", person.strType, @"type", nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE object:nil userInfo:dic];
         [arrList removeObjectAtIndex:indexPath.row];
         [tblList reloadData];
         
@@ -151,6 +154,7 @@
     
     if (arrList.count>0) {
         [arrList removeAllObjects];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ADDPERSONARRAY_DELETE_ALL object:nil];
         [tblList reloadData];
     }
 }

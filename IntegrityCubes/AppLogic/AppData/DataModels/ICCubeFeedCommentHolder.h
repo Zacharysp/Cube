@@ -24,6 +24,7 @@
 @property(nonatomic,strong)NSString *strCubePosterName;
 @property(nonatomic,strong)NSString *strCubeRecievedName;
 @property(nonatomic,strong)NSString *strCubePostedDate;
+@property(nonatomic,strong)NSString *strCubePostedType;
 
 @property(nonatomic,strong)NSString *strCubeType;
 

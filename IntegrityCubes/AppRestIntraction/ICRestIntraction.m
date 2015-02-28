@@ -558,6 +558,7 @@
             
               cubeCommentDHolder.intSenderId=[[[arrCubeCommentListDetail objectAtIndex:i]valueForKey:@"cube_postedby"]integerValue];
             cubeCommentDHolder.strCubePostedDate=[[arrCubeCommentListDetail objectAtIndex:i]valueForKey:@"cube_posteddate"];
+             cubeCommentDHolder.strCubePostedType=[[arrCubeCommentListDetail objectAtIndex:i]valueForKey:@"post_type"];
             
 //            cubeCommentDHolder.strCubeTitle = [[arrCubeCommentListDetail objectAtIndex:i] valueForKey:@"cube_title"] ;
 //            cubeCommentDHolder.strCubeValue = [[arrCubeCommentListDetail objectAtIndex:i] valueForKey:@"cube_value"] ;
@@ -808,13 +809,6 @@
     }
     
 }
-
-#pragma mark - CUBE_SINGLE_TEAM_POST
-#pragma mark - CUBE_MULTIPLE_TEAM_POST
-#pragma mark - CUBE_MULTIPLE_USER_AND_MULTIPLE_TEAM_POST
-#pragma mark - CUBE_SINGLE_USER_AND_MULTIPLE_TEAM_POST
-#pragma mark - CUBE_MULTIPLE_USER_AND_SINGLE_TEAM_POST
-#pragma mark - CUBE_SINGLE_USER_AND_SINGLE_TEAM_POST
 
 
 #pragma mark - CUBE_FEED_POST_COMMENT

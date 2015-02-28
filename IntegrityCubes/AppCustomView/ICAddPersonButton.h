@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ICPostReceiverHolder.h"
+#import "ICTeamOrPersonListHolder.h"
 
 @interface ICAddPersonButton : UIButton
 
 @property(nonatomic,strong)ICPostReceiverHolder *userDHolder;
+@property(nonatomic,strong)ICTeamOrPersonListHolder *selectedDHolder;
 
 @end

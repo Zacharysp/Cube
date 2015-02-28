@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ICPostReceiverHolder.h"
+#import "ICHomeViewController.h"
 
 @interface ICAddedListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {

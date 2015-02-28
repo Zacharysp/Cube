@@ -14,7 +14,7 @@
 @end
 
 @implementation ICHomeViewController
-@synthesize indicatorStyle,delegate;
+@synthesize indicatorStyle,delegate, lblCounterAddedPerson;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +38,8 @@
     arrSearchPersonData = [[NSMutableArray alloc]init];
     arrSearchTeamData = [[NSMutableArray alloc]init];
     arrAddedPersonList = [[NSMutableArray alloc] init];
-    
+    arrSelectedPersonList = [[NSMutableArray alloc] init];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListSuccess:) name:NOTIFICATION_LIST_CUBE_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getCubeListFailed:) name:NOTIFICATION_LIST_CUBE_FAILED object:nil];
    
@@ -75,6 +76,10 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cubeFeedDeleteSuccess:) name:NOTIFICATION_DELETE_CUBE_FEED_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cubeFeedDeleteFailed:) name:NOTIFICATION_DELETE_CUBE_FEED_FAILED object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(lblAddedPersonDelete:) name:NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(lblAddedPersonDeleteAll) name:NOTIFICATION_ADDPERSONARRAY_DELETE_ALL object:nil];
     
     btnCubeAward.layer.cornerRadius = 8.0f;
     btnCubeAward.layer.borderColor = [UIColor blackColor].CGColor;
@@ -225,6 +230,11 @@
     addedTapped.numberOfTapsRequired = 1;
     [btnAddToList addGestureRecognizer:addedTapped];
     
+    lblCounterAddedPerson.layer.cornerRadius = 10.0f;
+    lblCounterAddedPerson.backgroundColor = [UIColor redColor];
+    lblCounterAddedPerson.textColor = [UIColor whiteColor];
+    lblCounterAddedPerson.layer.masksToBounds = YES;
+    [lblCounterAddedPerson setFont:[UIFont fontWithName:@"Arial" size:10.0]];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -580,7 +590,7 @@
         
         cell.backgroundColor=[UIColor colorWithRed:45.0/255.0 green:41.0/255 blue:37.0/255 alpha:1];
         
-        ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+        ICTeamOrPersonListHolder *teamOrPersonSearchDHolder = (ICTeamOrPersonListHolder*)[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
          cell.textLabel.textColor=[UIColor whiteColor];
         [cell.textLabel setFont:[UIFont systemFontOfSize:14]];
         ICAddPersonButton *addBtn = [[ICAddPersonButton alloc] initWithFrame:CGRectMake(278, 6, 30, 23)];
@@ -593,6 +603,7 @@
 
         [addBtn addTarget:self action:@selector(btnAddPersonDidClicked:)forControlEvents:UIControlEventTouchUpInside];
         addBtn.userDHolder = [ICPostReceiverHolder new];
+        addBtn.selectedDHolder = teamOrPersonSearchDHolder;
 
         if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
             
@@ -636,6 +647,8 @@
            
         ICCubeFeedCommentHolder *cubeFeedHolder=[ICCubeFeedCommentHolder new];
         
+       
+        
         if (isSearchStaffTeam) {
             
             if (arrSearchStaffTeam.count>0) {
@@ -655,6 +668,8 @@
                 cubeFeedHolder=[arrTempCubeFeedList objectAtIndex:indexPath.row];
             }
         }
+        
+        
         
         //comment
         cell.lblCubeComments.text=cubeFeedHolder.strComment;
@@ -692,15 +707,30 @@
         [cell.imgVCube addGestureRecognizer:tapped];
         
         //receiver image
+        NSString *type = cubeFeedHolder.strCubePostedType;
         [cell.imgVCubeReciever removeFromSuperview];
         cell.imgVCubeReciever =[[UIImageView alloc]initWithFrame:CGRectMake(125, 10, 35, 35)];
         cell.imgVCubeReciever.layer.cornerRadius=2.0f;
         cell.imgVCubeReciever.layer.masksToBounds=YES;
         [cell.contentView addSubview:cell.imgVCubeReciever];
-        
-        [cell.imgVCubeReciever setImageWithUrl:[NSURL URLWithString:cubeFeedHolder.strCubeRecievedImageUrl]                    andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE]
-                                     andNoImage:[UIImage imageNamed:NO_IMAGE]];
-        
+        if ([type isEqualToString:@"s"]) {
+            [cell.imgVCubeReciever setImageWithUrl:[NSURL URLWithString:cubeFeedHolder.strCubeRecievedImageUrl]                    andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE]
+                                        andNoImage:[UIImage imageNamed:NO_IMAGE]];
+            
+            
+        }
+        else{
+            receiverIDWhenImageTapped = cubeFeedHolder.strCubeFeedId;
+            [cell.imgVCubeReciever setImage:[UIImage imageNamed:@"sampleTeamIphone"]];
+            UITapGestureRecognizer *imageTapped = [[UITapGestureRecognizer alloc]
+                                                 initWithTarget:self
+                                                 action:@selector(ReceiverImageTapped:)];
+            imageTapped.numberOfTapsRequired = 1;
+            [cell.btnCubeReceiver addGestureRecognizer:imageTapped];
+        }
+        cell.btnCubeReceiver.index=indexPath.row;
+        cell.btnCubeReceiver.tag=1;
+    
         //sender image
         [cell.imgVCubeSender removeFromSuperview];
         cell.imgVCubeSender = [[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 35, 35)];
@@ -742,11 +772,7 @@
                       forControlEvents:UIControlEventTouchUpInside];
          cell.btnLikeComment.index=indexPath.row;
         
-        [cell.btnCubeReceiver addTarget:self
-                            action:@selector(btnViewProfileDidClicked:)
-                  forControlEvents:UIControlEventTouchUpInside];
-        cell.btnCubeReceiver.index=indexPath.row;
-        cell.btnCubeReceiver.tag=1;
+        
         
         [cell.btnCubeSender addTarget:self
                                 action:@selector(btnViewProfileDidClicked:)
@@ -802,6 +828,9 @@
     {
         ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
         ICPostReceiverHolder *receiver = [ICPostReceiverHolder new];
+        [arrSelectedPersonList addObject:teamOrPersonSearchDHolder];
+        [arrTeamOrPersonList removeObject:teamOrPersonSearchDHolder];
+        
         if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
             receiver.strType = @"u";
             receiver.strId = teamOrPersonSearchDHolder.strPersonUserId;
@@ -815,6 +844,7 @@
         }
         searchTeamOrPerson.text = receiver.strName;
         [arrAddedPersonList addObject:receiver];
+        lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
         [searchTeamOrPerson resignFirstResponder];
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.3];
@@ -1615,6 +1645,7 @@
     imgVCube.hidden=YES;
     lblPickCube.hidden=YES;
     [arrAddedPersonList removeAllObjects];
+    lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
   
     [txtCubeComment setText:MESSAGE_WRITE_MESSAGE];
     arrTempCubeFeedList = [arrCubeFeedList copy];
@@ -2190,8 +2221,12 @@
 -(void)btnAddPersonDidClicked:(ICAddPersonButton*)sender{
     if (sender.userDHolder) {
         ICPostReceiverHolder *receiver = sender.userDHolder;
+        ICTeamOrPersonListHolder *selectedPerson = sender.selectedDHolder;
         searchTeamOrPerson.text = receiver.strName;
         [arrAddedPersonList addObject:receiver];
+        [arrSelectedPersonList addObject:selectedPerson];
+        [arrTeamOrPersonList removeObject:selectedPerson];
+        lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
         [searchTeamOrPerson resignFirstResponder];
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.3];
@@ -2207,4 +2242,57 @@
     }
     
 }
+
+-(void)lblAddedPersonDelete:(NSNotification *)notification{
+    NSDictionary *dic = notification.userInfo;
+    NSString *personID = [dic valueForKey:@"id"];
+    NSString *type = [dic valueForKey:@"type"];
+    ICPostReceiverHolder *deletedReceiverHolder;
+    ICTeamOrPersonListHolder *deletedHolder;
+    for (ICPostReceiverHolder *holder in arrAddedPersonList) {
+        if ([holder.strId isEqualToString:personID]) {
+            deletedReceiverHolder = holder;
+            break;
+        }
+    }
+    [arrAddedPersonList removeObject:deletedReceiverHolder];
+    if ([type isEqualToString:@"u"]) {
+        for (ICTeamOrPersonListHolder *holder in arrSelectedPersonList) {
+            if ([holder.strPersonUserId isEqualToString:personID]) {
+                deletedHolder = holder;
+                break;
+            }
+        }
+    }
+    else{
+        for (ICTeamOrPersonListHolder *holder in arrSelectedPersonList) {
+            if ([holder.strTeamId isEqualToString:personID]) {
+                deletedHolder = holder;
+                break;
+            }
+        }
+    }
+    [arrSelectedPersonList removeObject:deletedHolder];
+    [arrTeamOrPersonList addObject:deletedHolder];
+    lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
+}
+
+-(void)lblAddedPersonDeleteAll{
+    [arrAddedPersonList removeAllObjects];
+    lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
+    [arrTeamOrPersonList addObjectsFromArray:arrSelectedPersonList];
+    [arrSelectedPersonList removeAllObjects];
+}
+
+-(void)ReceiverImageTapped:(UITapGestureRecognizer*)sender{
+    NSLog(@"%f,%f", sender.view.frame.origin.x, sender.view.frame.origin.y);
+    ICGroupImageTappedViewController *controller = [[ICGroupImageTappedViewController alloc] init];
+    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
+    popover.contentSize = CGSizeMake(220,239);
+    popover.border = NO;
+    popover.tint = FPPopoverWhiteTint;
+    popover.alpha = 1.0;
+    [popover presentPopoverFromPoint:cellPosition];
+}
+
 @end

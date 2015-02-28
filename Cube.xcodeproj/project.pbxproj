@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B6064BCB1A9E9CE6000E2986 /* ICPostReceiverHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */; };
 		B6064BCE1A9EB8CC000E2986 /* ICAddPersonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */; };
+		B6064BD41AA114E0000E2986 /* ICGroupImageTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BD31AA114E0000E2986 /* ICGroupImageTappedViewController.m */; };
 		B6CA39571A9CF9D300F3B230 /* ICAddedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */; };
 		CE0A5D9B1941997D0024A75B /* leaderBoardIphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D991941997D0024A75B /* leaderBoardIphone.png */; };
 		CE0A5D9C1941997D0024A75B /* leaderBoardIphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D9A1941997D0024A75B /* leaderBoardIphone@2x.png */; };
@@ -256,6 +257,8 @@
 		B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICPostReceiverHolder.m; sourceTree = "<group>"; };
 		B6064BCC1A9EB8CC000E2986 /* ICAddPersonButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAddPersonButton.h; sourceTree = "<group>"; };
 		B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddPersonButton.m; sourceTree = "<group>"; };
+		B6064BD21AA114E0000E2986 /* ICGroupImageTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGroupImageTappedViewController.h; sourceTree = "<group>"; };
+		B6064BD31AA114E0000E2986 /* ICGroupImageTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGroupImageTappedViewController.m; sourceTree = "<group>"; };
 		B6CA39551A9CF9D300F3B230 /* ICAddedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAddedListViewController.h; sourceTree = "<group>"; };
 		B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddedListViewController.m; sourceTree = "<group>"; };
 		CE0A5D991941997D0024A75B /* leaderBoardIphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderBoardIphone.png; sourceTree = "<group>"; };
@@ -624,6 +627,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6064BD11AA114B4000E2986 /* GroupImageTappedView */ = {
+			isa = PBXGroup;
+			children = (
+				B6064BD21AA114E0000E2986 /* ICGroupImageTappedViewController.h */,
+				B6064BD31AA114E0000E2986 /* ICGroupImageTappedViewController.m */,
+			);
+			name = GroupImageTappedView;
+			sourceTree = "<group>";
+		};
 		B6CA39581A9CF9E100F3B230 /* AddedListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +1026,7 @@
 		CE28858918D1D1FA006BE26B /* AppCustomView */ = {
 			isa = PBXGroup;
 			children = (
+				B6064BD11AA114B4000E2986 /* GroupImageTappedView */,
 				B6CA39581A9CF9E100F3B230 /* AddedListViewController */,
 				CE22BB451913C9390099F266 /* NotificationViewController */,
 				CE22BB441913C9300099F266 /* Notification Number */,
@@ -1802,6 +1815,7 @@
 				CE3246E61908E7BB006E2810 /* UIColor+Util.m in Sources */,
 				CE38521718FBECAA005F214E /* ICCommonChartDataHolder.m in Sources */,
 				CE24A01A18EA845700310985 /* UIImageView+LazyImage.m in Sources */,
+				B6064BD41AA114E0000E2986 /* ICGroupImageTappedViewController.m in Sources */,
 				CE7BC8C01A04F2C200F7FEBC /* ICSlideNotificationViewController.m in Sources */,
 				CE28857318D1CA64006BE26B /* ASIFormDataRequest.m in Sources */,
 				CE9AEA5318FD5D0600101173 /* ICCubeOfTheWeekDHolder.m in Sources */,

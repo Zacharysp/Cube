@@ -27,6 +27,7 @@
 #import "ICAddedListViewController.h"
 #import "ICPostReceiverHolder.h"
 #import "ICAddPersonButton.h"
+#import "ICGroupImageTappedViewController.h"
 
 @protocol UpdateSlideTableDelegate <NSObject>
 -(void)updateSlideTable;
@@ -68,6 +69,7 @@
     NSMutableArray *arrCubeFeedList;
     NSMutableArray *arrSearchTeamData;
     NSMutableArray *arrAddedPersonList;
+    NSMutableArray *arrSelectedPersonList;
 
     NSMutableArray *arrSearchPersonData;
     NSMutableArray *arrTeamOrPersonList;
@@ -79,6 +81,8 @@
     NSString *strSearchReceiverId;
     NSString *strSearchRecordType;
     NSString *currentSearchText;
+    NSString *receiverIDWhenImageTapped;
+    CGPoint cellPosition;
     
     NSInteger pageId;
     NSInteger searchPageId;
@@ -105,6 +109,8 @@
     ICTeamOrPersonListHolder *teamOrStaffDH;
     NSMutableArray *arrSearchStaffTeam;
     NSMutableArray *arrTempSearchStaffTeam;
+    
+    
 }
 @property(nonatomic) UIScrollViewIndicatorStyle indicatorStyle;
 
@@ -113,5 +119,6 @@
 -(IBAction)btnSubmitPostCubeDidClicked:(id)sender;
 
 @property(nonatomic,assign)id<UpdateSlideTableDelegate>delegate;
+@property (strong, nonatomic) IBOutlet UILabel *lblCounterAddedPerson;
 
 @end
