@@ -106,7 +106,6 @@
     MNMBottomPullToRefreshManager *pullToRefreshManager_;
     NSUInteger reloads_;
     BOOL isSearchStaffTeam;
-    ICTeamOrPersonListHolder *teamOrStaffDH;
     NSMutableArray *arrSearchStaffTeam;
     NSMutableArray *arrTempSearchStaffTeam;
     

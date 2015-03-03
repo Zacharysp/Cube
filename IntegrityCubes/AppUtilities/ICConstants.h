@@ -156,8 +156,6 @@
 #define NOTIFICATION_CUBE_COMMENT_LIST_FAILED @"notificationCubeCommentListFailed"
 #define NOTIFICATION_CUBE_COMMENT_LIST_SUCCESS @"notificationCubeCommentListSuccess"
 
-//====== delete person ======
-
 
 #define NOTIFICATION_CUBE_POST_FAILED @"notificationPostCubeFailed"
 #define NOTIFICATION_CUBE_POST_SUCCESS @"notificationPostCubeSuccess"
@@ -165,6 +163,11 @@
 #define NOTIFICATION_CUBE_MULTIPLE_POST_FAILED @"notificationMultiplePostCubeFailed"
 #define NOTIFICATION_CUBE_MULTIPLE_POST_SUCCESS @"notificationMultiplePostCubeSuccess"
 
+#define NOTIFICATION_GET_USER_LIST_POPUP_FAILED @"notificationGetUserListPopupFailed"
+#define NOTIFICATION_GET_USER_LIST_POPUP_SUCCESS @"notificationGetUserListPopupSuccess"
+
+#define NOTIFICATION_CUBE_MULTIPLE_POST_FAILED @"notificationMultiplePostCubeFailed"
+#define NOTIFICATION_CUBE_MULTIPLE_POST_SUCCESS @"notificationMultiplePostCubeSuccess"
 
 #define NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE @"notificationAddPersonArrayDeleteSingle"
 #define NOTIFICATION_ADDPERSONARRAY_DELETE_ALL @"notificationAddPersonArrayDeleteAll"

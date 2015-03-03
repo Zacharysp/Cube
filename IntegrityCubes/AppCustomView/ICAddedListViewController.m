@@ -57,7 +57,6 @@
          ICPostReceiverHolder *person = (ICPostReceiverHolder*)[arrList objectAtIndex:indexPath.row];
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:person.strId,@"id", person.strType, @"type", nil];
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE object:nil userInfo:dic];
-        [arrList removeObjectAtIndex:indexPath.row];
         [tblList reloadData];
         
     }

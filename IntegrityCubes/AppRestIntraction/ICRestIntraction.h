@@ -111,4 +111,6 @@ ICRestIntraction *restIntraction;
 -(void)NotificationRequest;
 -(void)requestForNotificationFromServer;
 
+-(void)requestForGroupMember:(NSMutableDictionary*)info;
+
 @end

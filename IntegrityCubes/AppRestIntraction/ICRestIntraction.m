@@ -1128,6 +1128,7 @@ if (status_code==200)
         cubeCommentDHolder.intSenderId=[[[arrReceivedFeed objectAtIndex:i] valueForKey:@"sender_id"]integerValue];
         cubeCommentDHolder.intReceiverId=[[receivedFeedDataDict objectForKey:@"receiver_id"]integerValue];
         cubeCommentDHolder.strCubePostedDate=[[arrReceivedFeed objectAtIndex:i]valueForKey:@"cube_posteddate"];
+        cubeCommentDHolder.strCubePostedType=[[arrReceivedFeed objectAtIndex:i]valueForKey:@"post_type"];
         
 //        cubeCommentDHolder.strCubeTitle = [[arrReceivedFeed objectAtIndex:i] valueForKey:@"cube_title"] ;
 //        cubeCommentDHolder.strCubeValue = [[arrReceivedFeed objectAtIndex:i] valueForKey:@"cube_value"] ;
@@ -1220,7 +1221,8 @@ if (status_code==200)
             
             cubeCommentDHolder.intReceiverId=[[[arrSentFeed objectAtIndex:i] valueForKey:@"receiver_id"]integerValue];
             cubeCommentDHolder.intSenderId=[[sentFeedDataDict objectForKey:@"sender_id"]integerValue];
-             cubeCommentDHolder.strCubePostedDate=[[arrSentFeed objectAtIndex:i]valueForKey:@"cube_posteddate"];
+            cubeCommentDHolder.strCubePostedDate=[[arrSentFeed objectAtIndex:i]valueForKey:@"cube_posteddate"];
+            cubeCommentDHolder.strCubePostedType=[[arrSentFeed objectAtIndex:i]valueForKey:@"post_type"];
             [arrMySentCubeFeedList addObject:cubeCommentDHolder];
             
         }
@@ -3028,6 +3030,73 @@ if (status_code==200)
                            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_SETTING_UPDATE_FAILED object:errMsg];
                        });
     }
+}
+
+//Group Member
+
+-(void)requestForGroupMember:(NSMutableDictionary*)info{
+    
+    ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:urlPostCube];
+    
+    NSString *posterId = [info valueForKey:@"poster_id"];
+    NSString *posted_ids = [info valueForKey:@"posted_ids"];
+    NSString *cubeType = [info valueForKey:@"cube_type"];
+    NSString *cubeId = [info valueForKey:@"cube_id"];
+    NSString *cubeComments = [info valueForKey:@"cube_comments"];
+    NSString *postedTime = [info valueForKey:@"posted_time"];
+    
+    
+    [request setPostValue:posterId forKey:@"poster_id"];
+    [request setPostValue:posted_ids forKey:@"posted_ids"];
+    [request setPostValue:cubeType forKey:@"cube_type"];
+    [request setPostValue:cubeId forKey:@"cube_id"];
+    [request setPostValue:cubeComments forKey:@"cube_comments"];
+    [request setPostValue:postedTime forKey:@"posted_time"];
+    
+    [request setDelegate:self];
+    [request setDidFailSelector:@selector(requestForGroupMemberFail:)];
+    [request setDidFinishSelector:@selector(requestForGroupMemberSuccess:)];
+    [request startAsynchronous];
+    
+}
+-(void)requestForGroupMemberFail:(ASIFormDataRequest*)request{
+    
+    NSException *e;
+    NSLog(@"%@",e);
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_POST_FAILED object:@"Something went wrong,try again !"];
+                   });
+    
+}
+
+-(void)requestForGroupMemberSuccess:(ASIFormDataRequest*)request{
+    
+    NSString *responseString = [request responseString];
+    responseString = [[responseString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@""];
+    responseString = [responseString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+    SBJSON *parser=[[SBJSON alloc]init];
+    
+    NSDictionary *results = [parser objectWithString:responseString error:nil];
+    NSMutableDictionary *responseDict = ((NSMutableDictionary *)[results objectForKey:@"response"]);
+    NSInteger statusCode = [[responseDict valueForKey:@"status_code"] integerValue];
+    if (statusCode==200)
+    {
+        NSString *successMsg = [responseDict objectForKey:@"message"];
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_POST_SUCCESS object:successMsg];
+                       });
+        
+    }else{
+        
+        NSString *errMsg = [responseDict objectForKey:@"error_msg"];
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_CUBE_POST_FAILED object:errMsg];
+                       });
+    }
+    
 }
 
 

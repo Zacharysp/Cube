@@ -21,6 +21,7 @@
 #import "ICSearchProfileViewController.h"
 #import "ICDataBaseInteraction.h"
 #import "Reachability.h"
+#import "ICGroupImageTappedViewController.h"
 
 @interface ICProfileViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,MNMBottomPullToRefreshManagerClient,FPPopoverControllerDelegate>
 { 
@@ -49,6 +50,7 @@
     NSString *strFacebookLink;
     NSString *strTwiiterLink;
     NSString *strLinkedinLink;
+    NSString *receiverIDWhenImageTapped;
     NSInteger pageId;
     
     NSMutableArray       *arrCubeMyFeedList;

@@ -604,6 +604,7 @@
         [addBtn addTarget:self action:@selector(btnAddPersonDidClicked:)forControlEvents:UIControlEventTouchUpInside];
         addBtn.userDHolder = [ICPostReceiverHolder new];
         addBtn.selectedDHolder = teamOrPersonSearchDHolder;
+            
 
         if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
             
@@ -622,8 +623,9 @@
             addBtn.userDHolder.strId = teamOrPersonSearchDHolder.strTeamId;
             addBtn.userDHolder.strName = teamOrPersonSearchDHolder.strTeamName;
         }
-        
-        [cell.contentView addSubview:addBtn];
+        if (!isSearchStaffTeam) {
+            [cell.contentView addSubview:addBtn];
+        }
         
          return cell;
     }
@@ -716,8 +718,9 @@
         if ([type isEqualToString:@"s"]) {
             [cell.imgVCubeReciever setImageWithUrl:[NSURL URLWithString:cubeFeedHolder.strCubeRecievedImageUrl]                    andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE]
                                         andNoImage:[UIImage imageNamed:NO_IMAGE]];
-            
-            
+            [cell.btnCubeReceiver addTarget:self
+                                     action:@selector(btnViewProfileDidClicked:)
+                           forControlEvents:UIControlEventTouchUpInside];
         }
         else{
             receiverIDWhenImageTapped = cubeFeedHolder.strCubeFeedId;
@@ -826,99 +829,84 @@
     }
     else if(tableView == tblSearchTeamOrPerson)
     {
-        ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
-        ICPostReceiverHolder *receiver = [ICPostReceiverHolder new];
-        [arrSelectedPersonList addObject:teamOrPersonSearchDHolder];
-        [arrTeamOrPersonList removeObject:teamOrPersonSearchDHolder];
-        
-        if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
-            receiver.strType = @"u";
-            receiver.strId = teamOrPersonSearchDHolder.strPersonUserId;
-            receiver.strName = [NSString stringWithFormat:@"%@ %@", teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
-            
-        }else
-        {
-            receiver.strType = @"t";
-            receiver.strId = teamOrPersonSearchDHolder.strTeamId;
-            receiver.strName = teamOrPersonSearchDHolder.strTeamName;
-        }
-        searchTeamOrPerson.text = receiver.strName;
-        [arrAddedPersonList addObject:receiver];
-        lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
+        searchEditBegin = YES;
         [searchTeamOrPerson resignFirstResponder];
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.3];
-        searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
-                                             , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
-        UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
-        [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
-        view.layer.cornerRadius=5.0;
         
-        tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
-        [UIView commitAnimations];
-        [searchTeamOrPerson resetLayout];
-
-//        searchEditBegin = YES;
-//        [searchTeamOrPerson resignFirstResponder];
-//      
-//        dispatch_async(dispatch_get_main_queue(), ^
-//             {
-//                    [UIView beginAnimations:nil context:nil];
-//                    [UIView setAnimationDuration:0.5];
-//                    searchTeamOrPerson.frame = CGRectMake(5, 8, 190, searchTeamOrPerson.frame.size.height);
-//                    UIView *view = [searchTeamOrPerson.subviews objectAtIndex:0];
-//                    [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 190, 30)];
-//                    view.layer.cornerRadius = 5.0;
-//                    [UIView commitAnimations];
-//                    [searchTeamOrPerson resetLayout];
-//             });
-//       
-//        if (arrSearchTeamOrPersonData.count > 0)
-//        {
-//            if (isSearchStaffTeam) {
-//             
-//                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
-//                arrSearchStaffTeam=[NSMutableArray new];
-//             
-//                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
-//                {
-//                    sBarStaffTeam.text = teamOrPersonSearchDHolder.strTeamName;
-//                    strSearchReceiverId = teamOrPersonSearchDHolder.strTeamId;
-//                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
-//
-//                }
-//                else
-//                {
-//                    sBarStaffTeam.text = [NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
-//                    strSearchReceiverId = teamOrPersonSearchDHolder.strPersonUserId;
-//                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
-//                    
-//                    
-//                }
-//                searchPageId=0;
-//                [self getSearchFeeds];
-//              
-//            }else{
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [UIView beginAnimations:nil context:nil];
+                           [UIView setAnimationDuration:0.5];
+                           searchTeamOrPerson.frame = CGRectMake(5, 8, 190, searchTeamOrPerson.frame.size.height);
+                           UIView *view = [searchTeamOrPerson.subviews objectAtIndex:0];
+                           [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 190, 30)];
+                           view.layer.cornerRadius = 5.0;
+                           [UIView commitAnimations];
+                           [searchTeamOrPerson resetLayout];
+                       });
+        if (arrSearchTeamOrPersonData.count > 0)
+        {
+            if (isSearchStaffTeam) {
+                
+                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+                arrSearchStaffTeam=[NSMutableArray new];
+                
+                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
+                {
+                    sBarStaffTeam.text = teamOrPersonSearchDHolder.strTeamName;
+                    strSearchReceiverId = teamOrPersonSearchDHolder.strTeamId;
+                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
+                    
+                }
+                else
+                {
+                    sBarStaffTeam.text = [NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
+                    strSearchReceiverId = teamOrPersonSearchDHolder.strPersonUserId;
+                    strSearchRecordType = teamOrPersonSearchDHolder.strRecordType;
+                    
+                    
+                }
+                searchPageId=0;
+                [self getSearchFeeds];
+                
+            }else{
+                
+                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
+                ICPostReceiverHolder *receiver = [ICPostReceiverHolder new];
+                [arrSelectedPersonList addObject:teamOrPersonSearchDHolder];
+                [arrTeamOrPersonList removeObject:teamOrPersonSearchDHolder];
+                
+                if([teamOrPersonSearchDHolder.strRecordType isEqualToString:@"u"]){
+                    receiver.strType = @"u";
+                    receiver.strId = teamOrPersonSearchDHolder.strPersonUserId;
+                    receiver.strName = [NSString stringWithFormat:@"%@ %@", teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
+                    
+                }else
+                {
+                    receiver.strType = @"t";
+                    receiver.strId = teamOrPersonSearchDHolder.strTeamId;
+                    receiver.strName = teamOrPersonSearchDHolder.strTeamName;
+                }
+                searchTeamOrPerson.text = receiver.strName;
+                [arrAddedPersonList addObject:receiver];
+                lblCounterAddedPerson.text = [NSString stringWithFormat:@"%d", (int)arrAddedPersonList.count];
+                [searchTeamOrPerson resignFirstResponder];
+//                [UIView beginAnimations:nil context:nil];
+//                [UIView setAnimationDuration:0.3];
+//                searchTeamOrPerson.frame =CGRectMake(searchTeamOrPerson.frame.origin.x
+//                                                     , searchTeamOrPerson.frame.origin.y,210,searchTeamOrPerson.frame.size.height);
+//                UIView *view=[searchTeamOrPerson.subviews objectAtIndex:0];
+//                [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, 210, 30)];
+//                view.layer.cornerRadius=5.0;
 //                
-//                ICTeamOrPersonListHolder *teamOrPersonSearchDHolder=[arrSearchTeamOrPersonData objectAtIndex:indexPath.row];
-//                
-//                if(teamOrPersonSearchDHolder.strPersonFirstName == 0)
-//                {
-//                    searchTeamOrPerson.text=teamOrPersonSearchDHolder.strTeamName;
-//                    strReceiverId=teamOrPersonSearchDHolder.strTeamId;
-//                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
-//                    
-//                }
-//                else
-//                {
-//                    searchTeamOrPerson.text=[NSString stringWithFormat:@"%@ %@",teamOrPersonSearchDHolder.strPersonFirstName,teamOrPersonSearchDHolder.strPersonLastName];
-//                    
-//                    strReceiverId=teamOrPersonSearchDHolder.strPersonUserId;
-//                    strRecordType=teamOrPersonSearchDHolder.strRecordType;
-//                    
-//                }
-//            }
-//        }
+//                tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
+//                [UIView commitAnimations];
+//                [searchTeamOrPerson resetLayout];
+            }
+        }
+        
+        
+        
+        
         
         tblSearchTeamOrPerson.frame = CGRectMake(tblSearchTeamOrPerson.frame.origin.x,tblSearchTeamOrPerson.frame.origin.y, tblSearchTeamOrPerson.frame.size.width,0);
     }
@@ -2285,14 +2273,15 @@
 }
 
 -(void)ReceiverImageTapped:(UITapGestureRecognizer*)sender{
-    NSLog(@"%f,%f", sender.view.frame.origin.x, sender.view.frame.origin.y);
+    CGPoint touchPosition = CGPointMake([sender locationInView:self.view].x, [sender locationInView:self.view].y+75);
+
     ICGroupImageTappedViewController *controller = [[ICGroupImageTappedViewController alloc] init];
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,239);
+    popover.contentSize = CGSizeMake(220,100);
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:cellPosition];
+    [popover presentPopoverFromPoint:touchPosition];
 }
 
 @end
