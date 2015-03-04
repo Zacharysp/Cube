@@ -113,7 +113,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier=@"NotificationCell";
+    static NSString *cellIdentifier=@"cell";
     tableView.separatorInset=UIEdgeInsetsZero;
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.contentView.backgroundColor=[UIColor colorWithRed:245.0/255 green:245.0/255 blue:245.0/255 alpha:1];
@@ -121,34 +121,23 @@
     {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-//    ICNotificationHolder *holder=[ICNotificationHolder new];
-//    holder=[arrList objectAtIndex:indexPath.row];
-//    if ([holder.strSeenFlag isEqualToString:@"0"])
-//    {
-//        cell.contentView.backgroundColor=[UIColor colorWithRed:220.0/255 green:220.0/255 blue:220.0/255 alpha:1];
-//    }
+    
     ICPostReceiverHolder *person = (ICPostReceiverHolder*)[arrList objectAtIndex:indexPath.row];
     cell.textLabel.text=person.strName;
     [cell.textLabel setFont:[UIFont systemFontOfSize:10]];
     cell.textLabel.adjustsFontSizeToFitWidth=YES;
     cell.textLabel.minimumScaleFactor=0.5f;
-    
+
+    ICLikeCommentButton *deleteBtn = [[ICLikeCommentButton alloc] initWithFrame:CGRectMake(170, 2.5, 20, 20)];
+    [deleteBtn setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+    [deleteBtn addTarget:self action:@selector(deleteUser:) forControlEvents:UIControlEventTouchUpInside];
+    deleteBtn.tag = [person.strId integerValue];
+    deleteBtn.group_type = person.strType;
+    [cell addSubview:deleteBtn];
     
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    ICNotificationHolder *holder=[ICNotificationHolder new];
-//    holder=[arrList objectAtIndex:indexPath.row];
-//    if ([ICUtils isConnectedToHost])
-//    {
-//        [[ICDataBaseInteraction databaseInteractionManager] updateParticulerNotification:holder];
-//        [delegate commentPage:holder];
-//    }else{
-//        [ICUtils showAlert:MESSAGE_NET_NOT_AVAILABLE];
-//    }
-}
 -(void)btnClearAllNDidClicked:(id)sender{
     
     if (arrList.count>0) {
@@ -156,6 +145,11 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ADDPERSONARRAY_DELETE_ALL object:nil];
         [tblList reloadData];
     }
+}
+-(void)deleteUser:(ICLikeCommentButton*)sender{
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%lu",(unsigned long)sender.tag],@"id", sender.group_type, @"type", nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE object:nil userInfo:dic];
+    [tblList reloadData];
 }
 
 @end

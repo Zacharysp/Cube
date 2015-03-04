@@ -10,6 +10,9 @@
 		B6064BCB1A9E9CE6000E2986 /* ICPostReceiverHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */; };
 		B6064BCE1A9EB8CC000E2986 /* ICAddPersonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */; };
 		B6064BD41AA114E0000E2986 /* ICGroupImageTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6064BD31AA114E0000E2986 /* ICGroupImageTappedViewController.m */; };
+		B65D3C411AA6CB1400FA6B1A /* ICGroupDataHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B65D3C401AA6CB1400FA6B1A /* ICGroupDataHolder.m */; };
+		B65D3C441AA6FCD900FA6B1A /* ICSearchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65D3C431AA6FCD900FA6B1A /* ICSearchProfileViewController.m */; };
+		B6B38CB01AA58A0B0090C81C /* MultipleTeam.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B38CAF1AA58A0B0090C81C /* MultipleTeam.png */; };
 		B6CA39571A9CF9D300F3B230 /* ICAddedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */; };
 		CE0A5D9B1941997D0024A75B /* leaderBoardIphone.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D991941997D0024A75B /* leaderBoardIphone.png */; };
 		CE0A5D9C1941997D0024A75B /* leaderBoardIphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0A5D9A1941997D0024A75B /* leaderBoardIphone@2x.png */; };
@@ -41,7 +44,6 @@
 		CE22BB591913CD190099F266 /* arrowCubeTranslatorLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE22BB551913CD190099F266 /* arrowCubeTranslatorLeft@2x.png */; };
 		CE22BB5A1913CD190099F266 /* arrowCubeTranslatorRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CE22BB561913CD190099F266 /* arrowCubeTranslatorRight.png */; };
 		CE22BB5B1913CD190099F266 /* arrowCubeTranslatorRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE22BB571913CD190099F266 /* arrowCubeTranslatorRight@2x.png */; };
-		CE240D4A1910AEF600A43074 /* ICSearchProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE240D491910AEF600A43074 /* ICSearchProfileViewController.m */; };
 		CE240D511910FCEC00A43074 /* changePassword.png in Resources */ = {isa = PBXBuildFile; fileRef = CE240D4B1910FCEC00A43074 /* changePassword.png */; };
 		CE240D521910FCEC00A43074 /* changePassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE240D4C1910FCEC00A43074 /* changePassword@2x.png */; };
 		CE240D551910FCEC00A43074 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = CE240D4F1910FCEC00A43074 /* setting.png */; };
@@ -259,6 +261,11 @@
 		B6064BCD1A9EB8CC000E2986 /* ICAddPersonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddPersonButton.m; sourceTree = "<group>"; };
 		B6064BD21AA114E0000E2986 /* ICGroupImageTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGroupImageTappedViewController.h; sourceTree = "<group>"; };
 		B6064BD31AA114E0000E2986 /* ICGroupImageTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGroupImageTappedViewController.m; sourceTree = "<group>"; };
+		B65D3C3F1AA6CB1400FA6B1A /* ICGroupDataHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICGroupDataHolder.h; sourceTree = "<group>"; };
+		B65D3C401AA6CB1400FA6B1A /* ICGroupDataHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICGroupDataHolder.m; sourceTree = "<group>"; };
+		B65D3C421AA6FCD900FA6B1A /* ICSearchProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSearchProfileViewController.h; sourceTree = "<group>"; };
+		B65D3C431AA6FCD900FA6B1A /* ICSearchProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSearchProfileViewController.m; sourceTree = "<group>"; };
+		B6B38CAF1AA58A0B0090C81C /* MultipleTeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MultipleTeam.png; sourceTree = "<group>"; };
 		B6CA39551A9CF9D300F3B230 /* ICAddedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAddedListViewController.h; sourceTree = "<group>"; };
 		B6CA39561A9CF9D300F3B230 /* ICAddedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAddedListViewController.m; sourceTree = "<group>"; };
 		CE0A5D991941997D0024A75B /* leaderBoardIphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderBoardIphone.png; sourceTree = "<group>"; };
@@ -304,8 +311,6 @@
 		CE22BB551913CD190099F266 /* arrowCubeTranslatorLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowCubeTranslatorLeft@2x.png"; sourceTree = "<group>"; };
 		CE22BB561913CD190099F266 /* arrowCubeTranslatorRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowCubeTranslatorRight.png; sourceTree = "<group>"; };
 		CE22BB571913CD190099F266 /* arrowCubeTranslatorRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowCubeTranslatorRight@2x.png"; sourceTree = "<group>"; };
-		CE240D481910AEF600A43074 /* ICSearchProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICSearchProfileViewController.h; path = ../home/ICSearchProfileViewController.h; sourceTree = "<group>"; };
-		CE240D491910AEF600A43074 /* ICSearchProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICSearchProfileViewController.m; path = ../home/ICSearchProfileViewController.m; sourceTree = "<group>"; };
 		CE240D4B1910FCEC00A43074 /* changePassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changePassword.png; sourceTree = "<group>"; };
 		CE240D4C1910FCEC00A43074 /* changePassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "changePassword@2x.png"; sourceTree = "<group>"; };
 		CE240D4F1910FCEC00A43074 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = common/setting.png; sourceTree = "<group>"; };
@@ -736,8 +741,6 @@
 		CE1FC979191747BF005F2C0D /* common */ = {
 			isa = PBXGroup;
 			children = (
-				CE240D481910AEF600A43074 /* ICSearchProfileViewController.h */,
-				CE240D491910AEF600A43074 /* ICSearchProfileViewController.m */,
 				CEAD97BC19150DF300DB4C8B /* ICCommentViewController.h */,
 				CEAD97BD19150DF300DB4C8B /* ICCommentViewController.m */,
 			);
@@ -931,6 +934,8 @@
 				CE1AE8A81A0890A300B26E44 /* ICNotificationUpdateSettingHolder.m */,
 				B6064BC91A9E9CE6000E2986 /* ICPostReceiverHolder.h */,
 				B6064BCA1A9E9CE6000E2986 /* ICPostReceiverHolder.m */,
+				B65D3C3F1AA6CB1400FA6B1A /* ICGroupDataHolder.h */,
+				B65D3C401AA6CB1400FA6B1A /* ICGroupDataHolder.m */,
 				CECCBA3B193DD8A2000B41AF /* ICAlertView */,
 			);
 			path = DataModels;
@@ -1122,6 +1127,7 @@
 		CE288B8518D2D68D001A2988 /* team */ = {
 			isa = PBXGroup;
 			children = (
+				B6B38CAF1AA58A0B0090C81C /* MultipleTeam.png */,
 				CE33098818E94237007E8F22 /* sampleTeamIphone.png */,
 			);
 			path = team;
@@ -1251,6 +1257,8 @@
 			children = (
 				CE1E6FA118EEAFA500B33342 /* ICHomeViewController.h */,
 				CE1E6FA218EEAFA500B33342 /* ICHomeViewController.m */,
+				B65D3C421AA6FCD900FA6B1A /* ICSearchProfileViewController.h */,
+				B65D3C431AA6FCD900FA6B1A /* ICSearchProfileViewController.m */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1707,6 +1715,7 @@
 				CE4480B418F54B6600F939E5 /* chooseCube.png in Resources */,
 				CE2D18FB1934B7DF002D0CD3 /* No-Photo-Available-150x150@2x.jpg in Resources */,
 				CE0A5D9B1941997D0024A75B /* leaderBoardIphone.png in Resources */,
+				B6B38CB01AA58A0B0090C81C /* MultipleTeam.png in Resources */,
 				CEA6EDD61A0CE6DA0032413E /* notification.png in Resources */,
 				CEA4C0B31946BF1D002F6D6C /* Main_iPhone.storyboard in Resources */,
 				CE46B399193CA5F900875A59 /* 80*80@2x.png in Resources */,
@@ -1756,6 +1765,7 @@
 				CE4278A41912054F00D30FE4 /* FMDatabase.m in Sources */,
 				CE417A6218ED155600AA2ED4 /* MNMBottomPullToRefreshManager.m in Sources */,
 				CE0C34F91A079F9900C49A9B /* ICNotificationSettingHolder.m in Sources */,
+				B65D3C411AA6CB1400FA6B1A /* ICGroupDataHolder.m in Sources */,
 				CE28857418D1CA64006BE26B /* ASIHTTPRequest.m in Sources */,
 				CE28858F18D1D605006BE26B /* ICAccLoginViewController.m in Sources */,
 				CEAD5B60190E579900753CA2 /* ICPopOverViewController.m in Sources */,
@@ -1800,7 +1810,6 @@
 				CE28857918D1CA76006BE26B /* Reachability.m in Sources */,
 				CE4278A51912054F00D30FE4 /* FMDatabaseAdditions.m in Sources */,
 				CE4480C718F5670900F939E5 /* ICPieChartDataHolder.m in Sources */,
-				CE240D4A1910AEF600A43074 /* ICSearchProfileViewController.m in Sources */,
 				CE38521018FBA998005F214E /* FPPopoverView.m in Sources */,
 				CE24A02218EAD66400310985 /* ICLikeCommentButton.m in Sources */,
 				CE417A6318ED155600AA2ED4 /* MNMBottomPullToRefreshView.m in Sources */,
@@ -1816,6 +1825,7 @@
 				CE38521718FBECAA005F214E /* ICCommonChartDataHolder.m in Sources */,
 				CE24A01A18EA845700310985 /* UIImageView+LazyImage.m in Sources */,
 				B6064BD41AA114E0000E2986 /* ICGroupImageTappedViewController.m in Sources */,
+				B65D3C441AA6FCD900FA6B1A /* ICSearchProfileViewController.m in Sources */,
 				CE7BC8C01A04F2C200F7FEBC /* ICSlideNotificationViewController.m in Sources */,
 				CE28857318D1CA64006BE26B /* ASIFormDataRequest.m in Sources */,
 				CE9AEA5318FD5D0600101173 /* ICCubeOfTheWeekDHolder.m in Sources */,

@@ -12,5 +12,6 @@
 @property(nonatomic,assign)NSUInteger index;
 @property(nonatomic,assign)NSUInteger section;
 @property(nonatomic,assign)NSUInteger tag;
+@property(nonatomic,assign)NSString* group_type;
 
 @end

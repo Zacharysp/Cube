@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ICPostReceiverHolder.h"
 #import "ICHomeViewController.h"
+#import "ICLikeCommentButton.h"
 
 @interface ICAddedListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {

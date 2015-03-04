@@ -63,6 +63,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cubeFeedDeleteSuccess:) name:NOTIFICATION_DELETE_CUBE_FEED_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cubeFeedDeleteFailed:) name:NOTIFICATION_DELETE_CUBE_FEED_FAILED object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoSearchProfile:) name:NOTIFICATION_GO_BACK_TO_PROFILE object:nil];
+    
     arrTempCubeReceived = [NSMutableArray array];
     arrTempCubeReceivedFeedList = [NSMutableArray array];
     arrTempCubeSent = [NSMutableArray array];
@@ -469,43 +471,12 @@
     
     
     NSString *type = myCubeFeedDHolder.strCubePostedType;
-    UIImageView *imgVCubeReciever = (UIImageView*)[cell.contentView viewWithTag:2];
+    UIImageView* imgVCubeReciever = (UIImageView*)[cell.contentView viewWithTag:2];
     [imgVCubeReciever removeFromSuperview];
     imgVCubeReciever = nil;
     imgVCubeReciever = [[UIImageView alloc]initWithFrame:CGRectMake(130,8,35,35)];
     imgVCubeReciever.tag = 2;
     [cell.contentView addSubview:imgVCubeReciever];
-    
-    
-    
-    
-    
-    
-    if ([type isEqualToString:@"s"]) {
-        [imgVCubeReciever setImageWithUrl:[NSURL URLWithString:myCubeFeedDHolder.strCubeRecievedImageUrl]
-                            andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE]
-                               andNoImage:[UIImage imageNamed:NO_IMAGE]];
-        ICLikeCommentButton *btnRightViewProfile=(ICLikeCommentButton*)[cell.contentView viewWithTag:17];
-        [btnRightViewProfile addTarget:self
-                                action:@selector(btnViewProfileDidClicked:)
-                      forControlEvents:UIControlEventTouchUpInside];
-        btnRightViewProfile.index=indexPath.row;
-        btnRightViewProfile.tag=1;
-    }
-    else{
-        receiverIDWhenImageTapped = myCubeFeedDHolder.strCubeFeedId;
-        [imgVCubeReciever setImage:[UIImage imageNamed:@"sampleTeamIphone"]];
-        UITapGestureRecognizer *imageTapped = [[UITapGestureRecognizer alloc]
-                                               initWithTarget:self
-                                               action:@selector(ReceiverImageTapped:)];
-        imageTapped.numberOfTapsRequired = 1;
-        ICLikeCommentButton *btnRightViewProfile=(ICLikeCommentButton*)[cell.contentView viewWithTag:17];
-        [btnRightViewProfile addGestureRecognizer:imageTapped];
-        btnRightViewProfile.index=indexPath.row;
-        btnRightViewProfile.tag=1;
-    }
-    
-    
     
     
     //image for cube
@@ -595,8 +566,37 @@
     lblSenderName.adjustsFontSizeToFitWidth=YES;
     lblReceiverName.adjustsFontSizeToFitWidth=YES;
     
-    lblReceiverName.text=myCubeFeedDHolder.strCubeRecievedName;
     lblSenderName.text=myCubeFeedDHolder.strCubePosterName;
+    
+    if ([type isEqualToString:@"s"]) {
+        [imgVCubeReciever setImageWithUrl:[NSURL URLWithString:myCubeFeedDHolder.strCubeRecievedImageUrl]
+                            andPlaceHoder:[UIImage imageNamed:NO_IMAGE_AVAILABLE]
+                               andNoImage:[UIImage imageNamed:NO_IMAGE]];
+        ICLikeCommentButton *btnRightViewProfile=(ICLikeCommentButton*)[cell.contentView viewWithTag:17];
+        [btnRightViewProfile addTarget:self
+                                action:@selector(btnViewProfileDidClicked:)
+                      forControlEvents:UIControlEventTouchUpInside];
+        btnRightViewProfile.index=indexPath.row;
+        btnRightViewProfile.tag=1;
+       
+        
+        lblReceiverName.text=myCubeFeedDHolder.strCubeRecievedName;
+    }
+    else{
+        receiverIDWhenImageTapped = myCubeFeedDHolder.strCubeFeedId;
+        [imgVCubeReciever setImage:[UIImage imageNamed:@"MultipleTeam"]];
+        UITapGestureRecognizer *imageTapped = [[UITapGestureRecognizer alloc]
+                                               initWithTarget:self
+                                               action:@selector(ReceiverImageTapped:)];
+        imageTapped.numberOfTapsRequired = 1;
+       
+        ICLikeCommentButton *btnRightViewProfile=(ICLikeCommentButton*)[cell.contentView viewWithTag:17];
+        btnRightViewProfile.index= myCubeFeedDHolder.intSenderId;
+        btnRightViewProfile.tag= [myCubeFeedDHolder.strCubeFeedId integerValue];
+        btnRightViewProfile.group_type = myCubeFeedDHolder.strCubeType;
+        [btnRightViewProfile addGestureRecognizer:imageTapped];
+        lblReceiverName.text=nil;
+    }
   
     lblComment.text=myCubeFeedDHolder.strComment;
     lblComment.userInteractionEnabled=YES;
@@ -1576,15 +1576,24 @@
 
 -(void)ReceiverImageTapped:(UITapGestureRecognizer*)sender{
     CGPoint touchPosition = CGPointMake([sender locationInView:self.view].x, [sender locationInView:self.view].y+75);
+    ICLikeCommentButton* btn = (ICLikeCommentButton*)sender.view;
     
     ICGroupImageTappedViewController *controller = [[ICGroupImageTappedViewController alloc] init];
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,100);
+    controller.user_id = [NSString stringWithFormat:@"%lu", (unsigned long)btn.index];
+    controller.cube_postedid = [NSString stringWithFormat:@"%lu", (unsigned long)btn.tag];
+    controller.group_type = btn.group_type;
+    controller.from_view = @"profile";
+    popover = [[FPPopoverController alloc] initWithViewController:controller];
+    popover.contentSize = CGSizeMake(220,110);
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
     [popover presentPopoverFromPoint:touchPosition];
-    NSLog(@"receiver's id is %@", receiverIDWhenImageTapped);
+}
+
+-(void)gotoSearchProfile:(NSNotification*)notification{
+    [popover dismissPopoverAnimated:YES];
+    [self performSegueWithIdentifier:@"viewProfile" sender:notification.userInfo];
 }
 
 @end

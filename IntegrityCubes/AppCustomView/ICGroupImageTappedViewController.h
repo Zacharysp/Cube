@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ICLikeCommentButton.h"
+#import "ICSearchProfileViewController.h"
 
-@interface ICGroupImageTappedViewController : UIViewController
+@interface ICGroupImageTappedViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>{
+    AryaHUD *HUD;
+    NSMutableArray *arrList;
+    UITableView *tblList;
+}
 
+@property(nonatomic,strong)NSString *user_id;
+@property(nonatomic,strong)NSString *cube_postedid;
+@property(nonatomic,strong)NSString *group_type;
+@property(nonatomic,strong)NSString *from_view;
 @end

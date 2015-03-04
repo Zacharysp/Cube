@@ -81,6 +81,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(lblAddedPersonDelete:) name:NOTIFICATION_ADDPERSONARRAY_DELETE_SINGLE object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(lblAddedPersonDeleteAll) name:NOTIFICATION_ADDPERSONARRAY_DELETE_ALL object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoSearchProfile:) name:NOTIFICATION_GO_BACK_TO_HOME object:nil];
+    
     btnCubeAward.layer.cornerRadius = 8.0f;
     btnCubeAward.layer.borderColor = [UIColor blackColor].CGColor;
     btnCubeAward.layer.borderWidth = 0.5;
@@ -286,12 +288,12 @@
     
     ICNotificationViewController *controller = [[ICNotificationViewController alloc] init];
     controller.delegate = self;
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,300);
-    popover.border = NO;
-    popover.tint = FPPopoverRedTint;
-    popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:CGPointMake(263,17)];
+    FPPopoverController *popoverRefresh = [[FPPopoverController alloc] initWithViewController:controller];
+    popoverRefresh.contentSize = CGSizeMake(220,300);
+    popoverRefresh.border = NO;
+    popoverRefresh.tint = FPPopoverRedTint;
+    popoverRefresh.alpha = 1.0;
+    [popoverRefresh presentPopoverFromPoint:CGPointMake(263,17)];
     
     popOver=popover;
     
@@ -417,12 +419,12 @@
 - (void)btnAddedPressed {
     ICAddedListViewController *controller = [[ICAddedListViewController alloc] init];
     controller.arrList = arrAddedPersonList;
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,239);
-    popover.border = NO;
-    popover.tint = FPPopoverWhiteTint;
-    popover.alpha = 1.0;
-    [popover presentPopoverFromPoint:CGPointMake(230,85)];
+    FPPopoverController *popoverAdd = [[FPPopoverController alloc] initWithViewController:controller];
+    popoverAdd.contentSize = CGSizeMake(220,239);
+    popoverAdd.border = NO;
+    popoverAdd.tint = FPPopoverWhiteTint;
+    popoverAdd.alpha = 1.0;
+    [popoverAdd presentPopoverFromPoint:CGPointMake(230,85)];
 }
 -(IBAction)listOfCubeAwards:(id)sender
 {
@@ -721,18 +723,26 @@
             [cell.btnCubeReceiver addTarget:self
                                      action:@selector(btnViewProfileDidClicked:)
                            forControlEvents:UIControlEventTouchUpInside];
+            
+            cell.lblCubeReciever.text=cubeFeedHolder.strCubeRecievedName;
+            cell.btnCubeReceiver.index=indexPath.row;
+            cell.btnCubeReceiver.tag=1;
         }
         else{
             receiverIDWhenImageTapped = cubeFeedHolder.strCubeFeedId;
-            [cell.imgVCubeReciever setImage:[UIImage imageNamed:@"sampleTeamIphone"]];
+            [cell.imgVCubeReciever setImage:[UIImage imageNamed:@"MultipleTeam"]];
+            
             UITapGestureRecognizer *imageTapped = [[UITapGestureRecognizer alloc]
-                                                 initWithTarget:self
-                                                 action:@selector(ReceiverImageTapped:)];
+                                                   initWithTarget:self
+                                                   action:@selector(ReceiverImageTapped:)];
             imageTapped.numberOfTapsRequired = 1;
+            cell.btnCubeReceiver.index= cubeFeedHolder.intSenderId;
+            cell.btnCubeReceiver.tag= [cubeFeedHolder.strCubeFeedId integerValue];
+            cell.btnCubeReceiver.group_type = cubeFeedHolder.strCubeType;
             [cell.btnCubeReceiver addGestureRecognizer:imageTapped];
+
         }
-        cell.btnCubeReceiver.index=indexPath.row;
-        cell.btnCubeReceiver.tag=1;
+        
     
         //sender image
         [cell.imgVCubeSender removeFromSuperview];
@@ -745,7 +755,6 @@
         
         //cube sender and receiver name
         cell.lblCubeSender.text=cubeFeedHolder.strCubePosterName;
-        cell.lblCubeReciever.text=cubeFeedHolder.strCubeRecievedName;
       
         //button action
         [cell.btnFeedDelete addTarget:self
@@ -2274,14 +2283,25 @@
 
 -(void)ReceiverImageTapped:(UITapGestureRecognizer*)sender{
     CGPoint touchPosition = CGPointMake([sender locationInView:self.view].x, [sender locationInView:self.view].y+75);
-
+    ICLikeCommentButton* btn = (ICLikeCommentButton*)sender.view;
+    
     ICGroupImageTappedViewController *controller = [[ICGroupImageTappedViewController alloc] init];
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
-    popover.contentSize = CGSizeMake(220,100);
+    controller.user_id = [NSString stringWithFormat:@"%lu", (unsigned long)btn.index];
+    controller.cube_postedid = [NSString stringWithFormat:@"%lu", (unsigned long)btn.tag];
+    controller.group_type = btn.group_type;
+    controller.from_view = @"home";
+    popover = [[FPPopoverController alloc] initWithViewController:controller];
+    popover.delegate = self;
+    popover.contentSize = CGSizeMake(220,110);
     popover.border = NO;
     popover.tint = FPPopoverWhiteTint;
     popover.alpha = 1.0;
     [popover presentPopoverFromPoint:touchPosition];
+}
+
+-(void)gotoSearchProfile:(NSNotification*)notification{
+    [popover dismissPopoverAnimated:YES];
+    [self performSegueWithIdentifier:@"viewProfileHome" sender:notification.userInfo];
 }
 
 @end

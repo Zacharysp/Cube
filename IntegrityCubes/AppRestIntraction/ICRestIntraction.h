@@ -20,6 +20,7 @@
 #import "ICCubeTranslatorDHolder.h"
 #import "ICNotificationSettingHolder.h"
 #import "ICNotificationUpdateSettingHolder.h"
+#import "ICGroupDataHolder.h"
 
 @class ICRestIntraction;
 ICRestIntraction *restIntraction;
@@ -66,6 +67,8 @@ ICRestIntraction *restIntraction;
     NSURL *urlCubeReceivedMyFeedList;
     NSURL *urlNotificationServerList;
     NSURL *urlSearchCubeFeedList;
+    NSURL *urlUserListPopup;
+    NSURL *urlTeamListPopup;
 }
 +(id)sharedManager;
 
@@ -111,6 +114,7 @@ ICRestIntraction *restIntraction;
 -(void)NotificationRequest;
 -(void)requestForNotificationFromServer;
 
--(void)requestForGroupMember:(NSMutableDictionary*)info;
+-(void)requestForGetUserList:(NSMutableDictionary*)info;
+-(void)requestForGetTeamList:(NSMutableDictionary*)info;
 
 @end

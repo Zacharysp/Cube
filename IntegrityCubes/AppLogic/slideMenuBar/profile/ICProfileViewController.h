@@ -23,6 +23,7 @@
 #import "Reachability.h"
 #import "ICGroupImageTappedViewController.h"
 
+
 @interface ICProfileViewController : UIViewController<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,MNMBottomPullToRefreshManagerClient,FPPopoverControllerDelegate>
 { 
         
@@ -51,6 +52,8 @@
     NSString *strTwiiterLink;
     NSString *strLinkedinLink;
     NSString *receiverIDWhenImageTapped;
+    NSString *senderIDWhenImageTapped;
+    NSString *cubeFeedIDWhenImageTapped;
     NSInteger pageId;
     
     NSMutableArray       *arrCubeMyFeedList;
@@ -76,6 +79,7 @@
     ICPopOverView       *popOverView;
     ICPopOverView       *popOverTextView;
     FPPopoverController *popOver;
+    FPPopoverController *popover;
     ICCubeFeedCommentHolder *userDetailDHolder;
     
     BOOL isTableLoadedFirstTime;

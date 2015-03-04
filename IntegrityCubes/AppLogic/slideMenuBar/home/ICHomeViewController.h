@@ -39,9 +39,10 @@
                                                     UIScrollViewDelegate,
                                                     NotificationDeledate,
                                                     MNMBottomPullToRefreshManagerClient,UISearchBarDelegate,
-                                                    ProfileSendCubeDelegate>
+                                                    ProfileSendCubeDelegate, FPPopoverControllerDelegate>
 
 {
+    FPPopoverController *popover;
     IBOutlet ICSearchBar *searchTeamOrPerson;
     ICSearchBar *sBarStaffTeam;
     IBOutlet UIButton  *btnCubeAward;

@@ -86,6 +86,8 @@
 #define URL_USER_DETAIL [NSString stringWithFormat:@"%@user/userinformation",URL_MAIN];
 #define URL_CHANGE_PASSWORD [NSString stringWithFormat:@"%@user/changeuserpassword",URL_MAIN];
 #define URL_FORGOT_PASSWORD [NSString stringWithFormat:@"%@user/forgotpassword", URL_MAIN];
+#define URL_GET_USERLIST [NSString stringWithFormat:@"%@cube/userlistpopup", URL_MAIN];
+#define URL_GET_TEAMLIST [NSString stringWithFormat:@"%@cube/teamlistpopup", URL_MAIN];
 
 #define URL_CUBE_LIST [NSString stringWithFormat:@"%@cube/cubelist", URL_MAIN];
 #define URL_CUBE_POST [NSString stringWithFormat:@"%@cube/postcube", URL_MAIN];
@@ -165,6 +167,9 @@
 
 #define NOTIFICATION_GET_USER_LIST_POPUP_FAILED @"notificationGetUserListPopupFailed"
 #define NOTIFICATION_GET_USER_LIST_POPUP_SUCCESS @"notificationGetUserListPopupSuccess"
+
+#define NOTIFICATION_GET_TEAM_LIST_POPUP_FAILED @"notificationGetTeamListPopupFailed"
+#define NOTIFICATION_GET_TEAM_LIST_POPUP_SUCCESS @"notificationGetTeamListPopupSuccess"
 
 #define NOTIFICATION_CUBE_MULTIPLE_POST_FAILED @"notificationMultiplePostCubeFailed"
 #define NOTIFICATION_CUBE_MULTIPLE_POST_SUCCESS @"notificationMultiplePostCubeSuccess"
@@ -261,6 +266,9 @@
 
 #define NOTIFICATION_SETTING_UPDATE_SUCCESS @"notificationsettingUpdateSuccess"
 #define NOTIFICATION_SETTING_UPDATE_FAILED @"notificationsettingUpdateFailed"
+
+#define NOTIFICATION_GO_BACK_TO_HOME @"notificationgobacktohome"
+#define NOTIFICATION_GO_BACK_TO_PROFILE  @"notificationgobacktohomeprofile"
 
 
 
